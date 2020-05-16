@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #F0F2F5 ;
+    background: #f8f8f8 ;
     -webkit-font-smoothing: antialiased
   }
   body, input, button {

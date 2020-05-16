@@ -7,6 +7,7 @@ export const Container = styled.div`
   border-radius: 4px;
   margin: 12px auto;
 
+  background-color: #fafafa;
   display: flex;
 `;
 
@@ -60,5 +61,6 @@ export const ImageContainer = styled.div`
   > img {
     width: 100%;
     height: auto;
+    border-radius: 4px;
   }
 `;
