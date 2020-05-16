@@ -1,3 +1,25 @@
-import React from "react"
+/* eslint-disable jsx-a11y/accessible-emoji */
+import React from 'react';
+import styled from 'styled-components';
 
-export default () => <div>Hello world!</div>
+import Author from '~/components/Author';
+import Introduction from '~/components/Introduction';
+import PreviewBlog from '~/components/PreviewBlog';
+
+const Container = styled.div`
+  padding-top: 24px;
+`;
+
+const Home = () => {
+  return (
+    <Container>
+      <Author />
+
+      <Introduction />
+
+      <PreviewBlog />
+    </Container>
+  );
+};
+
+export default Home;

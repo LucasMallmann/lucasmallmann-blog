@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const path = require('path');
 
 module.exports = {
   /* Your site config here */
@@ -30,7 +30,7 @@ module.exports = {
         background_color: '#f7f0eb',
         theme_color: '#EF476F',
         display: 'standalone',
-        icon: resolve('src', 'assets', 'icon.png'),
+        icon: path.resolve('src', 'assets', 'icon.png'),
       },
     },
     {
@@ -39,13 +39,12 @@ module.exports = {
         displayName: process.env.NODE_ENV !== 'production',
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'posts',
-    //     path: `${__dirname}/content/posts/`,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '~': path.join(__dirname, 'src'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-page-creator',
       options: {
