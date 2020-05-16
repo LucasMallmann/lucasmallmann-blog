@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: lucasmallmann/lucasmallmann
+  branch: master
+
+publish_mode: editorial_workflow
+
+media_folder: static/assets/posts
+public_folder: assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: content/posts
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # filename template
+    fields:
+      - { name: path, label: Path }
+      - {
+          name: date,
+          label: Date,
+          widget: datetime,
+          format: YYYY-MM-DD hh:mm:ss,
+        }
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: Tags, widget: list, default: [''] }
+      - { name: image, label: Cover, widget: image }

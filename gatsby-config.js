@@ -1,7 +1,8 @@
 const path = require('path');
+const siteMetadata = require('./config/metadata');
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata,
   plugins: [
     {
       resolve: 'gatsby-plugin-nprogress',
