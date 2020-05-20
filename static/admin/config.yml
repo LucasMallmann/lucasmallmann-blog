@@ -4,7 +4,6 @@ backend:
   branch: master
 
 publish_mode: editorial_workflow
-
 media_folder: static/assets/posts
 public_folder: assets
 
@@ -13,7 +12,7 @@ collections:
     label: Blog
     folder: content/posts
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # filename template
+    slug: '{{year}}-{{month}}-{{day}}--{{slug}}' # filename template
     fields:
       - { name: path, label: Path }
       - {

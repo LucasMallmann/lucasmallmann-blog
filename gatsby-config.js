@@ -4,6 +4,8 @@ const siteMetadata = require('./config/metadata');
 module.exports = {
   siteMetadata,
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
@@ -60,19 +62,25 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `posts`,
-        path: `${__dirname}/content/posts/`,
+        name: 'posts',
+        path: `${__dirname}/content/posts`,
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'assets',
+        path: `${__dirname}/static/assets`,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-layout',
     'gatsby-plugin-catch-links',
-    'gatsby-transformer-remark',
     'gatsby-plugin-netlify-cms',
+    'gatsby-transformer-remark',
     'gatsby-plugin-offline',
   ],
 };

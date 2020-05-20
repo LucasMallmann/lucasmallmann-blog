@@ -4,11 +4,15 @@ import { graphql } from 'gatsby';
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
+
+  const { image, title, date } = frontmatter;
+
   return (
     <div className="blog-post-container">
       <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
+        <h1>{title}</h1>
+        <h2>{date}</h2>
+        <img src={image} alt="cover" />
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
@@ -19,14 +23,19 @@ const BlogTemplate = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query PostPage($slug: String! = "/first-post/") {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      timeToRead
+      excerpt
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        path
         title
+        date(formatString: "DD/MM/YYYY")
         tags
+        description
+      }
+      fields {
+        slug
       }
     }
   }

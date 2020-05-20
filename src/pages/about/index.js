@@ -9,7 +9,7 @@ const About = () => {
       <h1>About</h1>
       <span>
         See the first post here{' '}
-        <Link to="/blog/my-first-post">/my-first-post</Link>
+        <Link to="/blog/first-post">/my-first-post</Link>
       </span>
     </Container>
   );
