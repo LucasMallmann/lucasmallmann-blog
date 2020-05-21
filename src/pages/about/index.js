@@ -8,8 +8,7 @@ const About = () => {
     <Container>
       <h1>About</h1>
       <span>
-        See the first post here{' '}
-        <Link to="/blog/first-post">/my-first-post</Link>
+        See the first post here <Link to="/blog/legendary">/legendary</Link>
       </span>
     </Container>
   );
