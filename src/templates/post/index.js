@@ -1,28 +1,25 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+
+import * as S from './styles';
 
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
-
   const { image, title, date } = frontmatter;
 
   const featuredImgFluid = image.childImageSharp.fluid;
 
   return (
-    <div className="blog-post-container">
-      <h1>blog</h1>
-      <div className="blog-post">
-        <h1>{title}</h1>
-        <h2>{date}</h2>
-        <Img fluid={featuredImgFluid} />
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </div>
-    </div>
+    <S.Container>
+      <S.CoverImage fluid={featuredImgFluid} />
+      <h1>{title}</h1>
+      <h2>{date}</h2>
+      <div
+        className="blog-post-content"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </S.Container>
   );
 };
 
@@ -38,7 +35,7 @@ export const pageQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 1280, quality: 60) {
               ...GatsbyImageSharpFluid
             }
           }
