@@ -18,7 +18,6 @@ collections:
     public_folder: ''
     slug: '{{year}}-{{month}}-{{day}}--{{slug}}' # filename template
     fields:
-      - { name: path, label: Path }
       - {
           name: date,
           label: Date,

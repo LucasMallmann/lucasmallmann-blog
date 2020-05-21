@@ -22,6 +22,19 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-nprogress',
       options: {
         color: '#7159c1',
@@ -81,7 +94,7 @@ module.exports = {
     'gatsby-plugin-layout',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify-cms',
-    'gatsby-transformer-remark',
+
     'gatsby-plugin-offline',
   ],
 };
