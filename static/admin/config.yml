@@ -3,10 +3,10 @@ backend:
   repo: lucasmallmann/lucasmallmann
   branch: master
 
-publish_mode: editorial_workflow
 media_folder: static/assets/posts
+public_folder: /assets/posts
 media_folder_relative: true
-public_folder: assets
+publish_mode: editorial_workflow
 
 collections:
   - name: blog
