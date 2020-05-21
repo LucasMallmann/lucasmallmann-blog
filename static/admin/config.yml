@@ -13,6 +13,9 @@ collections:
     label: Blog
     folder: content/posts
     create: true
+    path: '{{slug}}/index'
+    media_folder: ''
+    public_folder: ''
     slug: '{{year}}-{{month}}-{{day}}--{{slug}}' # filename template
     fields:
       - { name: path, label: Path }
