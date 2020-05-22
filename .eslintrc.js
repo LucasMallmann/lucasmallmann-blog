@@ -3,46 +3,47 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier", "prettier/react"],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react", "prettier", "react-hooks"],
+  plugins: ['react', 'prettier', 'react-hooks'],
   rules: {
-    "prettier/prettier": "error",
-    "react/jsx-filename-extension": [
-      "warn",
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': [
+      'warn',
       {
-        extensions: [".jsx", ".js"],
+        extensions: ['.jsx', '.js'],
       },
     ],
-    "import/prefer-default-export": "off",
-    "react/state-in-constructor": "off",
-    "no-console": ["error", { allow: ["tron"] }],
-    "no-param-reassign": "off",
-    "no-underscore-dangle": "off",
-    camelcase: "off",
-    "no-console": ["error", { allow: ["tron"] }],
-    "react/jsx-one-expression-per-line": "off",
-    "global-require": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/destructuring-assignment": "off",
-    "jsx-a11y/accessible-emoji": "off",
+    'import/prefer-default-export': 'off',
+    'react/state-in-constructor': 'off',
+    'no-console': ['error', { allow: ['tron'] }],
+    'no-param-reassign': 'off',
+    'no-underscore-dangle': 'off',
+    camelcase: 'off',
+    'no-console': ['error', { allow: ['tron'] }],
+    'react/jsx-one-expression-per-line': 'off',
+    'global-require': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/destructuring-assignment': 'off',
+    'jsx-a11y/accessible-emoji': 'off',
+    'react/no-danger': 'off',
   },
   settings: {
-    "import/resolver": {
-      "babel-plugin-root-import": {
-        rootPathSuffix: "src",
+    'import/resolver': {
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
       },
     },
   },
-}
+};

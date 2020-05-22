@@ -7,6 +7,7 @@ export const Container = styled.header`
   top: 0;
   right: 0;
   width: 100vw;
+  z-index: 3;
 
   background-color: ${(props) => props.theme.colors.secondary};
 `;

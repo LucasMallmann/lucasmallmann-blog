@@ -1,26 +1,61 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import * as S from './styles';
 
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark;
-  const { image, title, date } = frontmatter;
+  const { frontmatter, html, timeToRead } = markdownRemark;
+  const { image, title, date, description } = frontmatter;
 
   const featuredImgFluid = image.childImageSharp.fluid;
 
+  const formattedDate = useMemo(() => {
+    return format(parseISO(date), "dd 'de' MMMM 'de' yyyy", { locale: pt });
+  }, [date]);
+
+  const timeToReadLabel = useMemo(() => {
+    return `Leitura de ${timeToRead} minuto${timeToRead > 1 ? 's' : ''}`;
+  }, [timeToRead]);
+
   return (
-    <S.Container>
+    <>
       <S.CoverImage fluid={featuredImgFluid} />
-      <h1>{title}</h1>
-      <h2>{date}</h2>
-      <div
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </S.Container>
+      <S.Container>
+        <time>
+          {formattedDate} - {timeToReadLabel}
+        </time>
+
+        <S.PostHeader>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </S.PostHeader>
+
+        <S.Content
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </S.Container>
+    </>
   );
+};
+
+BlogTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      html: PropTypes.string,
+      timeToRead: PropTypes.number,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        date: PropTypes.string,
+        image: PropTypes.object,
+        description: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export const pageQuery = graphql`
@@ -30,7 +65,7 @@ export const pageQuery = graphql`
       timeToRead
       frontmatter {
         title
-        date(formatString: "DD/MM/YYYY")
+        date
         tags
         description
         image {
