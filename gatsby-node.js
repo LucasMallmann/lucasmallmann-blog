@@ -69,12 +69,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const items = result.data.allMarkdownRemark.edges;
   const posts = items.filter((item) => item.node.fields.source === 'posts');
 
-  posts.forEach(({ node }) => {
+  posts.forEach(({ node }, index) => {
     const { slug, source } = node.fields;
+    const prev = index === posts.length - 1 ? null : posts[index + 1];
+    const next = index === 0 ? null : posts[index - 1];
+
     createPage({
       path: `blog${slug}`,
       component: blogPostTemplate,
-      context: { slug, source },
+      context: {
+        slug,
+        source,
+        prev,
+        next,
+      },
     });
   });
 };
