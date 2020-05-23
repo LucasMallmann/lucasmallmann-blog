@@ -18,3 +18,18 @@ Hey, welcome to my blog! My name is Tae’lur Alexis. I am an independent conten
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam
 
 ![joke](screen-shot-2020-05-19-at-14.31.24.png 'EPIC')
+
+## Now some code
+
+```jsx
+import React from 'react';
+
+const App = () => <h1>Hello world</h1>; // highlight-line
+
+export default App;
+```
+
+```bash{promptUser: user}
+npm install
+npm install --save express
+```

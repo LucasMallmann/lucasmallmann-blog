@@ -1,12 +1,39 @@
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
+import { lighten } from 'polished';
+
 export const Container = styled.div`
   margin-top: 36px;
+  padding-bottom: 30px;
 
   time {
     font-weight: 300;
     font-size: 14px;
+  }
+
+  .gatsby-highlight {
+    background-color: #272822;
+    border-radius: 0.3em;
+    margin: 0.5em 0;
+    padding: 1em;
+    overflow: auto;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: ${lighten(0.07, '#272822')};
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid ${(props) => props.theme.colors.primary};
+  }
+
+  .gatsby-highlight pre[class*='language-'].line-numbers {
+    padding: 0;
+    padding-left: 2.8em;
+    overflow: initial;
   }
 `;
 
