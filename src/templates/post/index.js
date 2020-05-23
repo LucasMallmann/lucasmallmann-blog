@@ -5,6 +5,7 @@ import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import * as S from './styles';
+import Description from '~/components/Description';
 
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
@@ -39,6 +40,7 @@ const BlogTemplate = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </S.Container>
+      <Description />
     </>
   );
 };
