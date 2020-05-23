@@ -12,6 +12,17 @@ export const Container = styled.div`
     font-size: 14px;
   }
 
+  .gatsby-code-button {
+    svg {
+      fill: ${lighten(0.07, '#272822')};
+    }
+
+    &-container {
+      top: 48px;
+      right: 16px;
+    }
+  }
+
   .gatsby-highlight {
     background-color: #272822;
     border-radius: 0.3em;

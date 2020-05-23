@@ -22,6 +22,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ## Now some code
 
 ```jsx
+alert('click to copy 💾');
 import React from 'react';
 
 const App = () => <h1>Hello world</h1>; // highlight-line
