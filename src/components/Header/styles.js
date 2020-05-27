@@ -27,13 +27,32 @@ export const Inner = styled.div`
       color: #f8f8f8;
       font-size: 16px;
       transition: color 0.2s;
-
-      &:hover {
-        color: ${darken(0.1, '#f8f8f8')};
-      }
+      position: relative;
 
       &:not(:last-child) {
         margin-right: 12px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        margin-top: 10px;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: ${darken(0.06, '#f8f8f8')};
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out 0s;
+      }
+
+      &:hover {
+        color: ${darken(0.06, '#f8f8f8')};
+        &::before {
+          visibility: visible;
+          transform: scaleX(1);
+        }
       }
     }
   }

@@ -96,12 +96,18 @@ module.exports = {
         siteUrl: 'https://www.example.com',
       },
     },
+    // 'gatsby-plugin-transition-link',
+    // {
+    //   resolve: 'gatsby-plugin-transition-link',
+    //   options: {
+    //     layout: require.resolve(`./src/layouts/index.js`),
+    //   },
+    // },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-layout',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify-cms',
-
     'gatsby-plugin-offline',
   ],
 };

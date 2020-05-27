@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import { FaTag } from 'react-icons/fa';
 
 import { Container, Content, ImageContainer } from './styles';
 
-const PostCard = () => {
+const PostCard = ({ data }) => {
+  const featuredImgFluid = data.frontmatter.image.childImageSharp.fluid;
+
   return (
     <Container>
       <Content>
-        <h2>Como construir uma PWA utilizando NextJS e uma PWA</h2>
-        <p>
-          I set out to create the first line of all-natural, deeply flavorful
-          Chinese condiments. Getting there was harder than I anticipated.
-        </p>
+        <h2>{data.frontmatter.title}</h2>
+        <p>{data.excerpt}</p>
 
         <div>
           <FaTag color="#424242" size={14} />
@@ -22,13 +23,26 @@ const PostCard = () => {
       </Content>
 
       <ImageContainer>
-        <img
-          src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-          alt="Post cover"
-        />
+        <img src={featuredImgFluid.src} alt="Post cover" />
       </ImageContainer>
     </Container>
   );
+};
+
+PostCard.propTypes = {
+  data: PropTypes.shape({
+    excerpt: PropTypes.string,
+    fields: PropTypes.shape({
+      slug: PropTypes.string,
+    }),
+    frontmatter: PropTypes.shape({
+      title: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string),
+      date: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default PostCard;
