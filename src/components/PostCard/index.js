@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
 import { FaTag } from 'react-icons/fa';
 
-import { Container, Content, ImageContainer } from './styles';
+import { Container, Content, ImageContainer, Tags } from './styles';
 
 const PostCard = ({ data }) => {
   const featuredImgFluid = data.frontmatter.image.childImageSharp.fluid;
+  const { fields } = data;
 
   return (
-    <Container>
+    <Container to={`blog/${fields.slug}`}>
       <Content>
         <h2>{data.frontmatter.title}</h2>
         <p>{data.excerpt}</p>
 
         <div>
           <FaTag color="#424242" size={14} />
-          <span>lifestyle, reactjs, frontend</span>
+          <Tags>
+            <li>
+              <span>lifestyle</span>
+            </li>
+            <li>
+              <span>reactjs</span>
+            </li>
+            <li>
+              <span>nextjs</span>
+            </li>
+          </Tags>
         </div>
 
         <small>27 Mar, 2020 - 5 min de leitura</small>

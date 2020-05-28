@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-export const Container = styled.div`
+export const Container = styled(Link)`
+  color: inherit;
   padding: 16px;
   border: 1px solid #ddd;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   margin: 12px auto;
-
   background-color: #fafafa;
   display: flex;
 `;
@@ -24,9 +25,11 @@ export const Content = styled.div`
   }
 
   p {
+    padding-right: 16px;
+    min-height: 60px;
     font-weight: 300;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 22px;
     flex: 1;
     margin-bottom: 24px;
   }
@@ -35,13 +38,6 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     padding: 0;
-
-    span {
-      font-weight: 300;
-      font-size: 14px;
-      margin: 0 8px;
-      line-height: 20px;
-    }
   }
 
   small {
@@ -54,13 +50,38 @@ export const Content = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 200px;
+  width: 180px;
   display: flex;
   place-content: center;
 
   > img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    object-fit: cover;
+  }
+`;
+
+export const Tags = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  li {
+    padding: 2px 5px;
+    background-color: #eee;
+    border-radius: 2px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 6px;
+
+    span {
+      font-weight: 300;
+      font-size: 12px;
+    }
   }
 `;
