@@ -37,6 +37,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const blogPostTemplate = require.resolve(`./src/templates/post/index.js`);
+  const blogListTemplate = require.resolve(
+    `./src/templates/blog-list/index.js`,
+  );
+
   const result = await graphql(`
     {
       allMarkdownRemark(
@@ -69,6 +73,23 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const items = result.data.allMarkdownRemark.edges;
   const posts = items.filter((item) => item.node.fields.source === 'posts');
 
+  // Build blog-list post
+  const postsPerPage = 6;
+  const numberOfPages = Math.ceil(posts.length / postsPerPage);
+  Array.from({ length: numberOfPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? '/blog' : `/blog/${i + 1}`,
+      component: blogListTemplate,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numberOfPages,
+        currentPage: i + 1,
+      },
+    });
+  });
+
+  // Build each post page
   posts.forEach(({ node }, index) => {
     const { slug, source } = node.fields;
     const prev = index === posts.length - 1 ? null : posts[index + 1];
