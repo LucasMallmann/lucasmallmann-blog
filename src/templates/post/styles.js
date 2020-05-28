@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 import { lighten } from 'polished';
+import { Link } from 'gatsby';
 
 export const Container = styled.div`
   margin-top: 36px;
   padding-bottom: 30px;
 
   time {
+    display: block;
     font-weight: 300;
     font-size: 14px;
   }
@@ -99,5 +101,42 @@ export const Content = styled.div`
     font-size: 30px;
     font-weight: 600;
     color: ${(props) => props.theme.colors.postHeaderTitleOrSubTitle};
+  }
+`;
+
+export const GoBackLink = styled(Link)`
+  display: inline-block;
+  color: ${(props) => props.theme.colors.primary};
+  position: relative;
+  margin-bottom: 16px;
+
+  font-size: 18px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    margin-top: 10px;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: ${(props) => props.theme.colors.primary};
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  &:hover {
+    &::before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+
+  span {
+    margin-left: 8px;
+  }
+
+  svg {
+    vertical-align: middle;
   }
 `;

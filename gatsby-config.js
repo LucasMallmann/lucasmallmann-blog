@@ -1,5 +1,8 @@
 const path = require('path');
+require('dotenv').config();
+
 const siteMetadata = require('./config/metadata');
+const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata,
@@ -96,13 +99,15 @@ module.exports = {
         siteUrl: 'https://www.example.com',
       },
     },
-    // 'gatsby-plugin-transition-link',
-    // {
-    //   resolve: 'gatsby-plugin-transition-link',
-    //   options: {
-    //     layout: require.resolve(`./src/layouts/index.js`),
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-layout',

@@ -1,17 +1,17 @@
 import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { MdKeyboardBackspace } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import * as S from './styles';
 import Description from '~/components/Description';
 
-const BlogTemplate = ({ data }) => {
-  const { markdownRemark } = data; // data.markdownRemark holds your post data
+const BlogTemplate = ({ data, location }) => {
+  const { markdownRemark } = data;
   const { frontmatter, html, timeToRead } = markdownRemark;
   const { image, title, date, description } = frontmatter;
-
   const featuredImgFluid = image.childImageSharp.fluid;
 
   const formattedDate = useMemo(() => {
@@ -26,6 +26,11 @@ const BlogTemplate = ({ data }) => {
     <>
       <S.CoverImage fluid={featuredImgFluid} />
       <S.Container>
+        <S.GoBackLink to={location.state.prevPath || '/'}>
+          <MdKeyboardBackspace size={20} />
+          <span>Voltar</span>
+        </S.GoBackLink>
+
         <time>
           {formattedDate} - {timeToReadLabel}
         </time>
@@ -56,6 +61,12 @@ BlogTemplate.propTypes = {
         image: PropTypes.object,
         description: PropTypes.string,
       }),
+    }),
+  }).isRequired,
+
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      prevPath: PropTypes.string,
     }),
   }).isRequired,
 };
