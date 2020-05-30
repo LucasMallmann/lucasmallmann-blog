@@ -12,7 +12,7 @@ export default {
       placeholder: '#424242',
       color: '#333',
       border: '#ddd',
-      background: '#eee',
+      background: '#f8f8f8',
     },
   },
 };

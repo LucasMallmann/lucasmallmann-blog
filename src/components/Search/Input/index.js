@@ -24,7 +24,6 @@ const Input = connectSearchBox(({ refine, ...rest }) => {
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         type="text"
-        placeholder="Search"
         aria-label="Search"
         onChange={(e) => refine(e.target.value)}
         {...rest}

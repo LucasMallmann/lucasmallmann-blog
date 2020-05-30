@@ -6,7 +6,7 @@ import { InstantSearch, Configure, Stats } from 'react-instantsearch-dom';
 // import * as S from './styles';
 
 import Input from './Input';
-import Hits from './postHits';
+import Hits from './Hit';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -24,11 +24,7 @@ const Search = ({ children, search }) => {
       onSearchStateChange={setSearchState}
     >
       <Configure hitsPerPage={100} distinct />
-      <Input
-        translations={{
-          placeholder: 'Pesquise algum post no blog',
-        }}
-      />
+      <Input placeholder="Pesquise algum post no blog" />
       {searchState?.query ? (
         <>
           <Stats

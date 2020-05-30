@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaAlgolia } from 'react-icons/fa';
+import { darken } from 'polished';
 
 export const Container = styled.form`
-  background: ${(props) => props.theme.colors.input.background};
+  background: ${(props) => darken(0.03, props.theme.colors.input.background)};
 
   color: #333;
-  border-radius: 4px;
-  border: 1px solid
+  border-radius: 6px;
+
+  border: 1.3px solid
     ${(props) =>
       props.focused
         ? props.theme.colors.primary
         : props.theme.colors.input.border};
+
   padding: 10px 16px;
-  width: 70%;
-  margin: 0 auto;
   display: flex;
   align-items: center;
 

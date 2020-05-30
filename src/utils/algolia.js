@@ -13,6 +13,14 @@ const postQuery = `{
           title
           date
           tags
+          description
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
         }
         excerpt(pruneLength: 5000)
       }
