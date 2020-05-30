@@ -9,7 +9,7 @@ const PostCard = ({ data }) => {
   const { fields } = data;
 
   return (
-    <Container to={`blog/${fields.slug}`}>
+    <Container to={`blog${fields.slug}`}>
       <Content>
         <h2>{data.frontmatter.title}</h2>
         <p>{data.excerpt}</p>
