@@ -8,7 +8,7 @@ import pt from 'date-fns/locale/pt';
 import * as S from './styles';
 import Description from '~/components/Description';
 
-const BlogTemplate = ({ data, location }) => {
+const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html, timeToRead } = markdownRemark;
   const { image, title, date, description } = frontmatter;
@@ -26,7 +26,7 @@ const BlogTemplate = ({ data, location }) => {
     <>
       <S.CoverImage fluid={featuredImgFluid} />
       <S.Container>
-        <S.GoBackLink to={location.state.prevPath || '/'}>
+        <S.GoBackLink to="/">
           <MdKeyboardBackspace size={20} />
           <span>Voltar</span>
         </S.GoBackLink>
@@ -61,12 +61,6 @@ BlogTemplate.propTypes = {
         image: PropTypes.object,
         description: PropTypes.string,
       }),
-    }),
-  }).isRequired,
-
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      prevPath: PropTypes.string,
     }),
   }).isRequired,
 };

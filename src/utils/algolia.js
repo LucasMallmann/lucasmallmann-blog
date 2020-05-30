@@ -5,11 +5,13 @@ const postQuery = `{
   ) {
     edges {
       node {
-        objectID: id
+        fields {
+          slug
+        }
+        id
         frontmatter {
           title
-          slug
-          date(formatString: "MMM D, YYYY")
+          date
           tags
         }
         excerpt(pruneLength: 5000)
@@ -34,6 +36,5 @@ const queries = [
     settings,
   },
 ];
-module.exports = queries;
 
-module.exports = [];
+module.exports = queries;
