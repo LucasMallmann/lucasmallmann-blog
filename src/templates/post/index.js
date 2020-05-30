@@ -5,6 +5,8 @@ import { MdKeyboardBackspace } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
+import { useNavigate } from '@reach/router';
+
 import * as S from './styles';
 import Description from '~/components/Description';
 
@@ -13,6 +15,8 @@ const BlogTemplate = ({ data }) => {
   const { frontmatter, html, timeToRead } = markdownRemark;
   const { image, title, date, description } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
+
+  const navigate = useNavigate();
 
   const formattedDate = useMemo(() => {
     return format(parseISO(date), "dd 'de' MMMM 'de' yyyy", { locale: pt });
@@ -26,7 +30,7 @@ const BlogTemplate = ({ data }) => {
     <>
       <S.CoverImage fluid={featuredImgFluid} />
       <S.Container>
-        <S.GoBackLink to="/">
+        <S.GoBackLink onClick={() => navigate(-1)}>
           <MdKeyboardBackspace size={20} />
           <span>Voltar</span>
         </S.GoBackLink>

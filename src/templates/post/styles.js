@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 import { lighten } from 'polished';
-import { Link } from 'gatsby';
 
 export const Container = styled.div`
   margin-top: 36px;
@@ -104,12 +103,12 @@ export const Content = styled.div`
   }
 `;
 
-export const GoBackLink = styled(Link)`
+export const GoBackLink = styled.span`
   display: inline-block;
   color: ${(props) => props.theme.colors.primary};
   position: relative;
   margin-bottom: 16px;
-
+  cursor: pointer;
   font-size: 18px;
 
   &::before {
