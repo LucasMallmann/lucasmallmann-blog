@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import PropTypes from 'prop-types';
-import {
-  InstantSearch,
-  SearchBox,
-  Configure,
-  Stats,
-} from 'react-instantsearch-dom';
+import { InstantSearch, Configure, Stats } from 'react-instantsearch-dom';
 
+// import * as S from './styles';
+
+import Input from './Input';
 import Hits from './postHits';
 
 const searchClient = algoliasearch(
@@ -23,12 +21,10 @@ const Search = ({ children, search }) => {
       indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
       searchClient={searchClient}
       searchState={searchState}
-      onSearchStateChange={(updatedSearchState) =>
-        setSearchState(updatedSearchState)
-      }
+      onSearchStateChange={setSearchState}
     >
       <Configure hitsPerPage={100} distinct />
-      <SearchBox
+      <Input
         translations={{
           placeholder: 'Pesquise algum post no blog',
         }}
