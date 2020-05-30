@@ -19,7 +19,19 @@ const BlogList = ({ data, location }) => {
     <S.Container>
       <Search search={parsedSearch}>
         {posts.map(({ node }) => {
-          return <PostCard key={node.id} data={node} />;
+          const { title, tags, image } = node.frontmatter;
+          const featuredImgFluid = image.childImageSharp.fluid;
+
+          return (
+            <PostCard
+              key={node.id}
+              slug={node.fields.slug}
+              title={title}
+              tags={tags}
+              excerpt={node.excerpt}
+              featuredImgFluid={featuredImgFluid}
+            />
+          );
         })}
       </Search>
     </S.Container>

@@ -3,25 +3,25 @@ import { Link } from 'gatsby';
 import { connectHits } from 'react-instantsearch-dom';
 
 import * as S from './styles';
+import PostCard from '~/components/PostCard';
 
 const Hits = connectHits(({ hits }) => {
-  console.log(hits);
-
   return (
     <S.Container>
       {hits.length ? (
         <>
           {hits.map((hit) => {
+            const featuredImgFluid = hit.image.childImageSharp.fluid;
+
             return (
-              <div css={{ marginBottom: 10 }} key={hit.id}>
-                <Link css={{ display: 'block', marginBottom: 8 }} to="/">
-                  <h4 css={{ marginBottom: 0 }}>Hello title</h4>
-                  {hit.subtitle ? (
-                    <h5 css={{ marginBottom: 0 }}>ola </h5>
-                  ) : null}
-                </Link>
-                <div>Exceprt</div>
-              </div>
+              <PostCard
+                title={hit.title}
+                tags={hit.tags}
+                key={hit.id}
+                excerpt={hit.excerpt}
+                slug={hit.fields.slug}
+                featuredImgFluid={featuredImgFluid}
+              />
             );
           })}
         </>

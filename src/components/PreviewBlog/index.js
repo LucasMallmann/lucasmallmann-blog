@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import PostCard from '~/components/PostCard';
@@ -10,9 +9,21 @@ const PreviewBlog = ({ posts }) => {
   return (
     <Container>
       <h1>Blogs recentes</h1>
-      {posts.map(({ node }) => (
-        <PostCard key={node.id} data={node} />
-      ))}
+      {posts.map(({ node }) => {
+        const { title, tags, image } = node.frontmatter;
+        const featuredImgFluid = image.childImageSharp.fluid;
+
+        return (
+          <PostCard
+            key={node.id}
+            slug={node.fields.slug}
+            title={title}
+            tags={tags}
+            excerpt={node.excerpt}
+            featuredImgFluid={featuredImgFluid}
+          />
+        );
+      })}
     </Container>
   );
 };

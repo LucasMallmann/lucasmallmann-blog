@@ -9,6 +9,7 @@ const postQuery = `{
           slug
         }
         id
+        excerpt(pruneLength: 200)
         frontmatter {
           title
           date
@@ -22,7 +23,6 @@ const postQuery = `{
             }
           }
         }
-        excerpt(pruneLength: 5000)
       }
     }
   }

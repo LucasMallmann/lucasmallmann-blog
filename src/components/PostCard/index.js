@@ -4,28 +4,21 @@ import { FaTag } from 'react-icons/fa';
 
 import { Container, Content, ImageContainer, Tags } from './styles';
 
-const PostCard = ({ data }) => {
-  const featuredImgFluid = data.frontmatter.image.childImageSharp.fluid;
-  const { fields } = data;
-
+const PostCard = ({ title, excerpt, tags, featuredImgFluid, slug }) => {
   return (
-    <Container to={`blog${fields.slug}`}>
+    <Container to={`/blog${slug}`}>
       <Content>
-        <h2>{data.frontmatter.title}</h2>
-        <p>{data.excerpt}</p>
+        <h2>{title}</h2>
+        <p>{excerpt}</p>
 
         <div>
           <FaTag color="#424242" size={14} />
           <Tags>
-            <li>
-              <span>lifestyle</span>
-            </li>
-            <li>
-              <span>reactjs</span>
-            </li>
-            <li>
-              <span>nextjs</span>
-            </li>
+            {tags.map((tag) => (
+              <li key={tag}>
+                <span>{tag}</span>
+              </li>
+            ))}
           </Tags>
         </div>
 
@@ -40,24 +33,14 @@ const PostCard = ({ data }) => {
 };
 
 PostCard.propTypes = {
-  data: PropTypes.shape({
-    excerpt: PropTypes.string,
-    fields: PropTypes.shape({
-      slug: PropTypes.string,
-    }),
-    frontmatter: PropTypes.shape({
-      title: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string),
-      date: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          fluid: PropTypes.shape({
-            src: PropTypes.string,
-          }),
-        }),
-      }),
-    }),
+  excerpt: PropTypes.string.isRequired,
+
+  slug: PropTypes.string.isRequired,
+
+  title: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  featuredImgFluid: PropTypes.shape({
+    src: PropTypes.string,
   }).isRequired,
 };
 
