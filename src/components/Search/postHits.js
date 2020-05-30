@@ -22,7 +22,7 @@ const Hits = connectHits(({ hits }) => (
         {hits.map((hit) => {
           return (
             <div css={{ marginBottom: 10 }} key={hit.id}>
-              <Link css={{ display: 'block', marginBottom: 8 }} to={hit.slug}>
+              <Link css={{ display: 'block', marginBottom: 8 }} to="/">
                 <h4 css={{ marginBottom: 0 }}>Hello title</h4>
                 {hit.subtitle ? <h5 css={{ marginBottom: 0 }}>ola </h5> : null}
               </Link>

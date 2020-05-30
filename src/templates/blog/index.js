@@ -1,28 +1,33 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import qs from 'qs';
 
 import PostCard from '~/components/PostCard';
 import Search from '~/components/Search';
 
 import * as S from './styles';
 
-// const searchIndices = [
-//   { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
-// ];
-
-const BlogList = ({ data }) => {
+const BlogList = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges;
+
+  const parsedSearch = useMemo(() => qs.parse(location?.search?.slice(1)), [
+    location.search,
+  ]);
 
   return (
     <S.Container>
-      <Search />
-
-      {posts.map(({ node }) => {
-        return <PostCard key={node.id} data={node} />;
-      })}
+      <Search search={parsedSearch}>
+        {posts.map(({ node }) => {
+          return <PostCard key={node.id} data={node} />;
+        })}
+      </Search>
     </S.Container>
   );
+};
+
+BlogList.defaultProps = {
+  location: {},
 };
 
 BlogList.propTypes = {
@@ -52,6 +57,9 @@ BlogList.propTypes = {
       ),
     }),
   }).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string,
+  }),
 };
 
 export const blogListQuery = graphql`

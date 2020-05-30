@@ -10,6 +10,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     'gatsby-image',
+    'gatsby-plugin-use-query-params',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

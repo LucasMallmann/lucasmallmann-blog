@@ -50,7 +50,13 @@ PostCard.propTypes = {
       tags: PropTypes.arrayOf(PropTypes.string),
       date: PropTypes.string,
       description: PropTypes.string,
-      image: PropTypes.string,
+      image: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fluid: PropTypes.shape({
+            src: PropTypes.string,
+          }),
+        }),
+      }),
     }),
   }).isRequired,
 };
