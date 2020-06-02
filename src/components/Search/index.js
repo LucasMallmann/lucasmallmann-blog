@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import PropTypes from 'prop-types';
-import { InstantSearch, Configure, Stats } from 'react-instantsearch-dom';
+import { InstantSearch, Configure } from 'react-instantsearch-dom';
 
-// import * as S from './styles';
+import * as S from './styles';
 
 import Input from './Input';
 import Hits from './Hit';
@@ -27,7 +27,7 @@ const Search = ({ children, search }) => {
       <Input placeholder="Pesquise algum post no blog" />
       {searchState?.query ? (
         <>
-          <Stats
+          <S.StatusContainer
             translations={{
               stats(numberOfHits) {
                 return `${numberOfHits} resultados encontrados`;

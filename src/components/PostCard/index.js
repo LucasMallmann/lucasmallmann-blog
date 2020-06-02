@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FaTag } from 'react-icons/fa';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { Container, Content, ImageContainer, Tags } from './styles';
 
-const PostCard = ({ title, excerpt, tags, featuredImgFluid, slug }) => {
+const PostCard = ({
+  title,
+  excerpt,
+  tags,
+  date,
+  featuredImgFluid,
+  timeToRead,
+  slug,
+}) => {
+  const formattedDate = useMemo(() => {
+    return format(parseISO(date), "dd 'de' MMMM 'de' yyyy", { locale: pt });
+  }, [date]);
+
+  const timeToReadLabel = useMemo(() => {
+    return `Leitura de ${timeToRead} minuto${timeToRead > 1 ? 's' : ''}`;
+  }, [timeToRead]);
+
   return (
     <Container to={`/blog${slug}`}>
       <Content>
@@ -22,7 +40,9 @@ const PostCard = ({ title, excerpt, tags, featuredImgFluid, slug }) => {
           </Tags>
         </div>
 
-        <small>27 Mar, 2020 - 5 min de leitura</small>
+        <small>
+          {formattedDate} - {timeToReadLabel}
+        </small>
       </Content>
 
       <ImageContainer>
@@ -34,9 +54,9 @@ const PostCard = ({ title, excerpt, tags, featuredImgFluid, slug }) => {
 
 PostCard.propTypes = {
   excerpt: PropTypes.string.isRequired,
-
+  timeToRead: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
-
+  date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   featuredImgFluid: PropTypes.shape({

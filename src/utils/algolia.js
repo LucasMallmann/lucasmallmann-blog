@@ -9,6 +9,7 @@ const postQuery = `{
           slug
         }
         id
+        timeToRead
         excerpt(pruneLength: 200)
         frontmatter {
           title

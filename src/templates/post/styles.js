@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 export const Container = styled.div`
   margin-top: 36px;
@@ -137,5 +137,34 @@ export const GoBackLink = styled.span`
 
   svg {
     vertical-align: middle;
+  }
+`;
+
+export const Tags = styled.ul`
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 24px 0 0;
+
+  svg {
+    margin-right: 12px;
+  }
+
+  li {
+    padding: 4px 10px;
+    background-color: #eee;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 14px;
+    color: #333;
+    transition: 0.5s background;
+    margin-left: 6px;
+
+    &:hover {
+      background-color: ${darken(0.05, '#eee')};
+    }
   }
 `;

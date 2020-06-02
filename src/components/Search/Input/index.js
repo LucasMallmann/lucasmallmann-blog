@@ -36,7 +36,7 @@ const Input = connectSearchBox(
           onChange={(e) => refine(e.target.value)}
           {...rest}
         />
-        <MdSearch size={24} focused={isFocused} />
+        <MdSearch size={24} />
       </S.Container>
     );
   },

@@ -19,11 +19,13 @@ const BlogList = ({ data, location }) => {
     <S.Container>
       <Search search={parsedSearch}>
         {posts.map(({ node }) => {
-          const { title, tags, image } = node.frontmatter;
+          const { title, tags, image, date } = node.frontmatter;
           const featuredImgFluid = image.childImageSharp.fluid;
 
           return (
             <PostCard
+              date={date}
+              timeToRead={node.timeToRead}
               key={node.id}
               slug={node.fields.slug}
               title={title}
@@ -49,6 +51,7 @@ BlogList.propTypes = {
         PropTypes.shape({
           node: PropTypes.shape({
             id: PropTypes.string,
+            timeToRead: PropTypes.number.isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string,
               date: PropTypes.string,
@@ -88,6 +91,7 @@ export const blogListQuery = graphql`
           fields {
             slug
           }
+          timeToRead
           frontmatter {
             title
             tags

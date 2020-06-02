@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
@@ -13,7 +13,7 @@ import Description from '~/components/Description';
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html, timeToRead } = markdownRemark;
-  const { image, title, date, description } = frontmatter;
+  const { image, title, date, description, tags } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
 
   const navigate = useNavigate();
@@ -44,6 +44,14 @@ const BlogTemplate = ({ data }) => {
           <p>{description}</p>
         </S.PostHeader>
 
+        <S.Tags>
+          {tags.map((tag) => (
+            <Link key={tag} to={`/blog?query=${tag}`}>
+              <li>{tag}</li>
+            </Link>
+          ))}
+        </S.Tags>
+
         <S.Content
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
@@ -64,6 +72,7 @@ BlogTemplate.propTypes = {
         date: PropTypes.string,
         image: PropTypes.object,
         description: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
       }),
     }),
   }).isRequired,

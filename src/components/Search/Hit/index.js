@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { connectHits } from 'react-instantsearch-dom';
 
 import * as S from './styles';
@@ -15,6 +14,8 @@ const Hits = connectHits(({ hits }) => {
 
             return (
               <PostCard
+                date={hit.date}
+                timeToRead={hit.timeToRead}
                 title={hit.title}
                 tags={hit.tags}
                 key={hit.id}
@@ -26,7 +27,9 @@ const Hits = connectHits(({ hits }) => {
           })}
         </>
       ) : (
-        <p>There were no results for your query. Please try again.</p>
+        <S.NotFoundContainer>
+          <p>Não foi encontrado nenhum post.</p>
+        </S.NotFoundContainer>
       )}
     </S.Container>
   );

@@ -10,16 +10,19 @@ const PreviewBlog = ({ posts }) => {
     <Container>
       <h1>Blogs recentes</h1>
       {posts.map(({ node }) => {
-        const { title, tags, image } = node.frontmatter;
+        const { timeToRead, frontmatter, fields, id, excerpt } = node;
+        const { title, tags, image, date } = frontmatter;
         const featuredImgFluid = image.childImageSharp.fluid;
 
         return (
           <PostCard
-            key={node.id}
-            slug={node.fields.slug}
+            key={id}
+            date={date}
+            timeToRead={timeToRead}
+            slug={fields.slug}
             title={title}
             tags={tags}
-            excerpt={node.excerpt}
+            excerpt={excerpt}
             featuredImgFluid={featuredImgFluid}
           />
         );
@@ -29,11 +32,13 @@ const PreviewBlog = ({ posts }) => {
 };
 
 PreviewBlog.propTypes = {
-  posts: PropTypes.arrayOf({
-    node: PropTypes.shape({
-      id: PropTypes.string,
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        id: PropTypes.string,
+      }),
     }),
-  }).isRequired,
+  ).isRequired,
 };
 
 export default PreviewBlog;
