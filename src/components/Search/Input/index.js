@@ -26,7 +26,7 @@ const Input = connectSearchBox(
     }, []);
 
     return (
-      <S.Container focused={isFocused}>
+      <S.Container focused={isFocused} onSubmit={(e) => e.preventDefault()}>
         <input
           ref={inputRef}
           onFocus={handleInputFocus}

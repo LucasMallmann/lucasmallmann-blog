@@ -24,7 +24,10 @@ const Search = ({ children, search }) => {
       onSearchStateChange={setSearchState}
     >
       <Configure hitsPerPage={100} distinct />
-      <Input placeholder="Pesquise algum post no blog" />
+      <Input
+        placeholder="Pesquise algum post no blog"
+        defaultValue={searchState?.query}
+      />
       {searchState?.query ? (
         <>
           <S.StatusContainer

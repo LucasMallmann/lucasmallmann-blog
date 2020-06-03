@@ -4,7 +4,7 @@ import { FaTag } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import { Container, Content, ImageContainer, Tags } from './styles';
+import * as S from './styles';
 
 const PostCard = ({
   title,
@@ -24,31 +24,31 @@ const PostCard = ({
   }, [timeToRead]);
 
   return (
-    <Container to={`/blog${slug}`}>
-      <Content>
+    <S.LinkWrapper to={`/blog${slug}`}>
+      <S.Content>
         <h2>{title}</h2>
         <p>{excerpt}</p>
 
         <div>
           <FaTag color="#424242" size={14} />
-          <Tags>
+          <S.Tags>
             {tags.map((tag) => (
               <li key={tag}>
                 <span>{tag}</span>
               </li>
             ))}
-          </Tags>
+          </S.Tags>
         </div>
 
         <small>
           {formattedDate} - {timeToReadLabel}
         </small>
-      </Content>
+      </S.Content>
 
-      <ImageContainer>
+      <S.ImageContainer>
         <img src={featuredImgFluid.src} alt="Post cover" />
-      </ImageContainer>
-    </Container>
+      </S.ImageContainer>
+    </S.LinkWrapper>
   );
 };
 

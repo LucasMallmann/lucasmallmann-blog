@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 
@@ -7,9 +7,25 @@ import PostCard from '~/components/PostCard';
 import Search from '~/components/Search';
 
 import * as S from './styles';
+import Pagination from '~/components/Pagination';
 
-const BlogList = ({ data, location }) => {
+const BlogList = ({ data, location, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
+  const { currentPage, numberOfPages } = pageContext;
+
+  const isFirst = useMemo(() => currentPage === 1, [currentPage]);
+
+  const isLast = useMemo(() => currentPage === numberOfPages, [
+    currentPage,
+    numberOfPages,
+  ]);
+
+  const prevPage = useMemo(
+    () => (currentPage - 1 === 1 ? 'blog/' : `/blog/${currentPage - 1}`),
+    [currentPage],
+  );
+
+  const nextPage = useMemo(() => `/blog/${currentPage + 1}`, [currentPage]);
 
   const parsedSearch = useMemo(() => qs.parse(location?.search?.slice(1)), [
     location.search,
@@ -36,6 +52,24 @@ const BlogList = ({ data, location }) => {
           );
         })}
       </Search>
+
+      <S.Pagination>
+        {!isFirst ? (
+          <Link to={prevPage} rel="prev">
+            ← Página Anterior
+          </Link>
+        ) : (
+          <div />
+        )}
+        <span>
+          {currentPage}/{numberOfPages}
+        </span>
+        {!isLast && (
+          <Link to={nextPage} rel="next">
+            Próxima Página →
+          </Link>
+        )}
+      </S.Pagination>
     </S.Container>
   );
 };
@@ -75,6 +109,12 @@ BlogList.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
   }),
+  pageContext: PropTypes.shape({
+    currentPage: PropTypes.number,
+    limit: PropTypes.number,
+    numberOfPages: PropTypes.number,
+    skip: PropTypes.number,
+  }).isRequired,
 };
 
 export const blogListQuery = graphql`

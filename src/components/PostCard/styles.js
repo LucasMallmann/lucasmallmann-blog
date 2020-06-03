@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-export const Container = styled(Link)`
+export const Container = styled.svg``;
+
+export const LinkWrapper = styled(Link)`
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+  }
+
   color: inherit;
   padding: 16px;
   border: 1px solid #ddd;
@@ -10,6 +20,37 @@ export const Container = styled(Link)`
   margin: 12px auto;
   background-color: #fafafa;
   display: flex;
+
+  &:hover {
+    border-color: transparent;
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:before,
+  &:after {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: ${(props) => props.theme.colors.primary};
+  }
+
+  &:before {
+    border-width: 1px 0 1px 0;
+    transform: scaleX(0);
+  }
+  &:after {
+    border-width: 0 1px 0 1px;
+    transform: scaleY(0);
+  }
+
+  &:hover:before,
+  &:hover:after {
+    transform: scale(1, 1);
+  }
 `;
 
 export const Content = styled.div`
