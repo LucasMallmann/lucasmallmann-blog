@@ -2,10 +2,40 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 90px;
+
+  footer {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export const Pagination = styled.div`
+  margin-top: 42px;
   display: flex;
   justify-content: space-between;
-  background-color: pink;
+  position: relative;
+
+  span {
+    flex: 1;
+    text-align: center;
+  }
+
+  a {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: ${(props) => props.theme.colors.primary};
+    svg {
+      margin-right: 6px;
+    }
+  }
+
+  .right {
+    right: 0;
+    svg {
+      margin-left: 6px;
+      margin-right: 0;
+    }
+  }
 `;

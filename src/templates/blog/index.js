@@ -2,12 +2,13 @@ import React, { useMemo } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import qs from 'qs';
+import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 
 import PostCard from '~/components/PostCard';
 import Search from '~/components/Search';
+import PoweredByAlgolia from '~/components/PoweredByAlgolia';
 
 import * as S from './styles';
-import Pagination from '~/components/Pagination';
 
 const BlogList = ({ data, location, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -54,22 +55,24 @@ const BlogList = ({ data, location, pageContext }) => {
       </Search>
 
       <S.Pagination>
-        {!isFirst ? (
-          <Link to={prevPage} rel="prev">
-            ← Página Anterior
+        {!isFirst && (
+          <Link to={prevPage} rel="prev" className="left">
+            <MdArrowBack /> Página Anterior
           </Link>
-        ) : (
-          <div />
         )}
         <span>
-          {currentPage}/{numberOfPages}
+          {currentPage} de {numberOfPages}
         </span>
         {!isLast && (
-          <Link to={nextPage} rel="next">
-            Próxima Página →
+          <Link to={nextPage} rel="next" className="right">
+            Próxima Página <MdArrowForward />
           </Link>
         )}
       </S.Pagination>
+
+      <footer>
+        <PoweredByAlgolia />
+      </footer>
     </S.Container>
   );
 };
