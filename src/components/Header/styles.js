@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Link } from 'gatsby';
 
 export const Container = styled.header`
   height: 48px;
@@ -58,7 +59,7 @@ export const Inner = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const Avatar = styled(Link)`
   display: flex;
   align-items: center;
 

@@ -110,6 +110,12 @@ module.exports = {
         chunkSize: 10000,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `lucasmallmann`,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-layout',
