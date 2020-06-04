@@ -31,6 +31,7 @@ module.exports = {
         plugins: [
           'gatsby-remark-smartypants',
           'gatsby-remark-code-buttons',
+          // 'gatsby-remark-images-zoom',
           {
             resolve: `gatsby-remark-images`,
             options: {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { Link } from 'gatsby';
+import media from 'styled-media-query';
 
 export const Container = styled.header`
   height: 48px;
@@ -9,15 +10,17 @@ export const Container = styled.header`
   right: 0;
   width: 100vw;
   z-index: 3;
-
   background-color: ${(props) => props.theme.colors.secondary};
+
+  ${media.lessThan('small')`
+    padding: 0 16px;
+  `}
 `;
 
 export const Inner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 100%;
 
   max-width: 950px;
@@ -29,6 +32,10 @@ export const Inner = styled.div`
       font-size: 16px;
       transition: color 0.2s;
       position: relative;
+
+      ${media.lessThan('small')`
+        font-size: 14px;
+      `}
 
       &:not(:last-child) {
         margin-right: 12px;
@@ -67,6 +74,11 @@ export const Avatar = styled(Link)`
     width: 38px;
     height: 38px;
     border-radius: 50%;
+
+    ${media.lessThan('small')`
+      width: 30px;
+      height: 30px;
+    `}
   }
 
   span {
@@ -74,5 +86,10 @@ export const Avatar = styled(Link)`
     font-weight: 600;
     margin-left: 16px;
     font-size: 18px;
+
+    ${media.lessThan('small')`
+      margin-left: 8px;
+      font-size: 16px;
+    `}
   }
 `;

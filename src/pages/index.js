@@ -4,12 +4,18 @@ import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import media from 'styled-media-query';
+
 import Author from '~/components/Author';
 import Introduction from '~/components/Introduction';
 import PreviewBlog from '~/components/PreviewBlog';
 
 const Container = styled.div`
   padding-top: 24px;
+
+  ${media.lessThan('small')`
+    padding: 16px;
+  `}
 `;
 
 const AnimatedLink = styled(Link)`

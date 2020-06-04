@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const Introduction = () => (
-  <Container>
+  <S.Container>
     <h1>Quem sou eu?</h1>
     <p>
       Hey, welcome to my blog! My name is Tae’lur Alexis. I am an independent
@@ -19,7 +19,7 @@ const Introduction = () => (
       about how I got into tech, check out my story on how I learned how to code
       and landed my first role.
     </p>
-  </Container>
+  </S.Container>
 );
 
 export default Introduction;

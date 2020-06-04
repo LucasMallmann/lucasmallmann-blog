@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 import avatarPic from '~/assets/me.jpeg';
 
@@ -11,7 +12,12 @@ const Header = () => {
       <S.Inner>
         <S.Avatar to="/">
           <img src={avatarPic} alt="Lucas Mallmann" />
-          <span>Lucas Mallmann</span>
+          <BrowserView>
+            <span>Lucas Mallmann</span>
+          </BrowserView>
+          <MobileView>
+            <span>mallmann</span>
+          </MobileView>
         </S.Avatar>
 
         <nav>

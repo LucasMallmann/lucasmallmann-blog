@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const Author = () => (
-  <Container>
+  <S.Container>
     <h1>Lucas Mallmann</h1>
     <p>Ajudando pessoas a se apaixonarem por códigos 🚀</p>
-  </Container>
+  </S.Container>
 );
 
 export default Author;
