@@ -168,3 +168,7 @@ export const Tags = styled.ul`
     }
   }
 `;
+
+export const Comments = styled.div`
+  margin-top: 32px;
+`;

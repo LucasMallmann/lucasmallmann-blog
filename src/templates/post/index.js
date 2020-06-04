@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-
 import { useNavigate } from '@reach/router';
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 
 import * as S from './styles';
 import Description from '~/components/Description';
 
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data;
-  const { frontmatter, html, timeToRead } = markdownRemark;
+  const { frontmatter, html, timeToRead, id } = markdownRemark;
   const { image, title, date, description, tags } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
 
@@ -25,6 +25,11 @@ const BlogTemplate = ({ data }) => {
   const timeToReadLabel = useMemo(() => {
     return `Leitura de ${timeToRead} minuto${timeToRead > 1 ? 's' : ''}`;
   }, [timeToRead]);
+
+  const disqusConfig = {
+    identifier: id,
+    title,
+  };
 
   return (
     <>
@@ -58,6 +63,10 @@ const BlogTemplate = ({ data }) => {
         />
       </S.Container>
       <Description />
+      <S.Comments>
+        <CommentCount config={disqusConfig} placeholder="..." />
+        <Disqus config={disqusConfig} />
+      </S.Comments>
     </>
   );
 };
@@ -65,6 +74,7 @@ const BlogTemplate = ({ data }) => {
 BlogTemplate.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
+      id: PropTypes.string,
       html: PropTypes.string,
       timeToRead: PropTypes.number,
       frontmatter: PropTypes.shape({
@@ -82,6 +92,7 @@ export const pageQuery = graphql`
   query PostPage($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      id
       timeToRead
       frontmatter {
         title
