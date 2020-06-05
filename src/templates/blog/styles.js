@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   margin-top: 90px;
+
+  ${media.lessThan('small')`
+    padding: 14px;
+    margin-top: 45px;
+  `}
 
   footer {
     margin-top: 12px;
@@ -16,6 +22,10 @@ export const Pagination = styled.div`
   justify-content: space-between;
   position: relative;
 
+  ${media.lessThan('small')`
+    font-size: 14px;
+  `}
+
   span {
     flex: 1;
     text-align: center;
@@ -26,6 +36,7 @@ export const Pagination = styled.div`
     display: flex;
     align-items: center;
     color: ${(props) => props.theme.colors.primary};
+
     svg {
       margin-right: 6px;
     }

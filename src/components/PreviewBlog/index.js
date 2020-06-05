@@ -8,7 +8,7 @@ import { Container } from './styles';
 const PreviewBlog = ({ posts }) => {
   return (
     <Container>
-      <h1>Blogs recentes</h1>
+      <h1>Posts recentes</h1>
       {posts.map(({ node }) => {
         const { timeToRead, frontmatter, fields, id, excerpt } = node;
         const { title, tags, image, date } = frontmatter;

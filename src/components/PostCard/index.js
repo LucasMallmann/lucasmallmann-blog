@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FaTag } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { isMobile, BrowserView } from 'react-device-detect';
 
 import * as S from './styles';
 
@@ -23,11 +24,19 @@ const PostCard = ({
     return `Leitura de ${timeToRead} minuto${timeToRead > 1 ? 's' : ''}`;
   }, [timeToRead]);
 
+  const parsedDescription = useMemo(() => {
+    if (isMobile) {
+      return `${excerpt.substring(0, 80)}...`;
+    }
+
+    return excerpt;
+  }, [excerpt, isMobile]);
+
   return (
-    <S.LinkWrapper to={`/blog${slug}`}>
+    <S.Container to={`/blog${slug}`}>
       <S.Content>
         <h2>{title}</h2>
-        <p>{excerpt}</p>
+        <p>{parsedDescription}</p>
 
         <div>
           <FaTag color="#424242" size={14} />
@@ -45,10 +54,12 @@ const PostCard = ({
         </small>
       </S.Content>
 
-      <S.ImageContainer>
-        <img src={featuredImgFluid.src} alt="Post cover" />
-      </S.ImageContainer>
-    </S.LinkWrapper>
+      <BrowserView>
+        <S.ImageContainer>
+          <img src={featuredImgFluid.src} alt="Post cover" />
+        </S.ImageContainer>
+      </BrowserView>
+    </S.Container>
   );
 };
 

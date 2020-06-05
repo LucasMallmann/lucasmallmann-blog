@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import media from 'styled-media-query';
 
 export const Container = styled.form`
   background: ${(props) => darken(0.03, props.theme.colors.input.background)};
-
   color: #333;
   border-radius: 6px;
 
@@ -16,6 +16,10 @@ export const Container = styled.form`
   padding: 10px 16px;
   display: flex;
   align-items: center;
+
+  ${media.lessThan('small')`
+    padding: 8px 12px;
+  `}
 
   svg {
     color: ${(props) =>
@@ -31,5 +35,9 @@ export const Container = styled.form`
     &::placeholder {
       color: ${(props) => props.theme.colors.input.placeholder};
     }
+
+    ${media.lessThan('small')`
+      font-size: 15px;
+    `}
   }
 `;

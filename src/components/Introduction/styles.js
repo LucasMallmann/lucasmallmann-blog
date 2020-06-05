@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const Container = styled.div`
-  margin-top: 48px;
+  margin: 48px 4px 0;
   display: flex;
   flex-direction: column;
 

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-export const Container = styled.svg``;
+import media from 'styled-media-query';
 
-export const LinkWrapper = styled(Link)`
+export const Container = styled(Link)`
   position: relative;
   &:before,
   &:after {
@@ -51,6 +51,10 @@ export const LinkWrapper = styled(Link)`
   &:hover:after {
     transform: scale(1, 1);
   }
+
+  ${media.lessThan('small')`
+    padding: 12px;
+  `}
 `;
 
 export const Content = styled.div`
@@ -63,6 +67,10 @@ export const Content = styled.div`
     font-size: 20px;
     line-height: 27px;
     margin: 0;
+
+    ${media.lessThan('small')`
+      font-size: 16px;
+    `}
   }
 
   p {
@@ -73,6 +81,13 @@ export const Content = styled.div`
     line-height: 22px;
     flex: 1;
     margin-bottom: 24px;
+
+    ${media.lessThan('small')`
+      font-size: 13px;
+      min-height: auto;
+      line-height: 20px;
+      margin-bottom: 16px;
+    `}
   }
 
   div {
@@ -94,6 +109,10 @@ export const ImageContainer = styled.div`
   width: 180px;
   display: flex;
   place-content: center;
+
+  ${media.lessThan('small')`
+    display: none;
+  `}
 
   > img {
     width: 100%;

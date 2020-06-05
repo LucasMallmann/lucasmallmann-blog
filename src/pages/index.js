@@ -14,7 +14,7 @@ const Container = styled.div`
   padding-top: 24px;
 
   ${media.lessThan('small')`
-    padding: 16px;
+    padding: 12px;
   `}
 `;
 
