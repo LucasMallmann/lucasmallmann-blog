@@ -36,7 +36,7 @@ const BlogTemplate = ({ data }) => {
       <S.CoverImage fluid={featuredImgFluid} />
       <S.Container>
         <S.GoBackLink onClick={() => navigate(-1)}>
-          <MdKeyboardBackspace size={20} />
+          <MdKeyboardBackspace />
           <span>Voltar</span>
         </S.GoBackLink>
 
@@ -62,7 +62,9 @@ const BlogTemplate = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </S.Container>
+
       <Description />
+
       <S.Comments>
         <CommentCount config={disqusConfig} placeholder="..." />
         <Disqus config={disqusConfig} />

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import media from 'styled-media-query';
 
 import { lighten, darken } from 'polished';
 
@@ -7,15 +8,60 @@ export const Container = styled.div`
   margin-top: 36px;
   padding-bottom: 30px;
 
+  ${media.lessThan('small')`
+    margin-top: 24px;
+    padding: 0 16px 30px;
+  `}
+
+  blockquote {
+    font-size: 1.4em;
+    width: 100%;
+    margin: 50px auto;
+    font-style: italic;
+    color: #555555;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid ${(props) => props.theme.colors.primary};
+    line-height: 1.6;
+    position: relative;
+    background: #ededed;
+
+    &::after {
+      content: '';
+    }
+
+    &::before {
+      font-family: Arial;
+      color: ${(props) => props.theme.colors.primary};
+      font-size: 4em;
+      content: '\\201C';
+      position: absolute;
+      left: 10px;
+      top: -10px;
+    }
+
+    span {
+      display: block;
+      color: #333333;
+      font-style: normal;
+      font-weight: bold;
+      margin-top: 1em;
+    }
+  }
+
   time {
     display: block;
     font-weight: 300;
     font-size: 14px;
+    letter-spacing: 1px;
+
+    ${media.lessThan('small')`
+      font-size: 13px;
+    `}
   }
 
   .gatsby-code-button {
     svg {
-      fill: ${lighten(0.07, '#272822')};
+      fill: ${lighten(0.12, '#272822')};
     }
 
     &-container {
@@ -54,6 +100,11 @@ export const PostHeader = styled.div`
     font-size: 36px;
     font-weight: 600;
     color: ${(props) => props.theme.colors.postHeaderTitleOrSubTitle};
+
+    ${media.lessThan('small')`
+      font-size: 28px;
+      margin-top: 16px;
+    `}
   }
 
   p {
@@ -111,6 +162,10 @@ export const GoBackLink = styled.span`
   cursor: pointer;
   font-size: 18px;
 
+  ${media.lessThan('small')`
+    font-size: 16px;
+  `}
+
   &::before {
     content: '';
     position: absolute;
@@ -137,6 +192,10 @@ export const GoBackLink = styled.span`
 
   svg {
     vertical-align: middle;
+    font-size: 20px;
+    ${media.lessThan('small')`
+      font-size: 16px;
+    `}
   }
 `;
 
@@ -161,7 +220,7 @@ export const Tags = styled.ul`
     font-size: 14px;
     color: #333;
     transition: 0.5s background;
-    margin-left: 6px;
+    margin-right: 8px;
 
     &:hover {
       background-color: ${darken(0.05, '#eee')};
@@ -171,4 +230,8 @@ export const Tags = styled.ul`
 
 export const Comments = styled.div`
   margin-top: 32px;
+
+  ${media.lessThan('small')`
+    padding: 0 16px;
+  `}
 `;

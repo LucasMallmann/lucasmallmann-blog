@@ -11,6 +11,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 50;
 
   background-color: ${lighten(0.02, '#eee')};
 
