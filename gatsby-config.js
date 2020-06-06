@@ -32,6 +32,19 @@ module.exports = {
           'gatsby-remark-smartypants',
           'gatsby-remark-images-zoom',
           {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              usePrefix: false,
+              providers: {
+                include: ['Youtube', 'Twitter', 'Codepen'],
+                exclude: ['Reddit', 'Flickr', 'Instagram'],
+              },
+              settings: {
+                Twitter: { theme: 'dark' },
+              },
+            },
+          },
+          {
             resolve: 'gatsby-remark-embed-video',
             options: {
               width: 700,

@@ -15,6 +15,8 @@ Hey, welcome to my blog! My name is Tae’lur Alexis. I am an independent conten
 
 ## Versão original com useState
 
+https://twitter.com/raae/status/1045394833001652225
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam
 
 ![joke](screen-shot-2020-05-19-at-14.31.24.png 'EPIC')
