@@ -30,12 +30,34 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-smartypants',
-          'gatsby-remark-code-buttons',
-          // 'gatsby-remark-images-zoom',
+          'gatsby-remark-images-zoom',
+          {
+            resolve: 'gatsby-remark-embed-video',
+            options: {
+              width: 700,
+              related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true, // Optional: Disable insertion of <style> border: 0
+              urlOverrides: [
+                {
+                  id: 'youtube',
+                  embedURL: (videoId) =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ],
+            },
+          },
+          {
+            resolve: 'gatsby-remark-code-buttons',
+            options: {
+              tooltipText: 'Copy',
+              toasterText: 'Copied ;)',
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
+              linkImagesToOriginal: false,
             },
           },
           {
@@ -44,6 +66,7 @@ module.exports = {
               showLineNumbers: true,
             },
           },
+          'gatsby-remark-responsive-iframe',
         ],
       },
     },
