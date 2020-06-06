@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   padding: 36px 0;
   border-top: 1px solid #424242;
   border-bottom: 1px solid #424242;
+
+  ${media.lessThan('small')`
+    padding: 36px 16px;
+  `}
 
   p {
     font-size: 16px;
