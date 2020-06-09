@@ -10,7 +10,7 @@ export const Container = styled.div`
   `}
 
   footer {
-    margin-top: 12px;
+    margin-top: 48px;
     display: flex;
     justify-content: flex-end;
   }

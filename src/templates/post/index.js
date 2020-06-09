@@ -11,10 +11,12 @@ import * as S from './styles';
 import Description from '~/components/Description';
 
 const BlogTemplate = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html, timeToRead, id } = markdownRemark;
+  const { post } = data;
+  const { frontmatter, html, timeToRead, id } = post;
   const { image, title, date, description, tags } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
+
+  // Query for last post
 
   const navigate = useNavigate();
 
@@ -75,7 +77,7 @@ const BlogTemplate = ({ data }) => {
 
 BlogTemplate.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    post: PropTypes.shape({
       id: PropTypes.string,
       html: PropTypes.string,
       timeToRead: PropTypes.number,
@@ -91,8 +93,8 @@ BlogTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query PostPage($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query($slug: String!) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       id
       timeToRead
@@ -108,6 +110,21 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+      fields {
+        slug
+      }
+    }
+
+    nextToRead: markdownRemark(fields: { slug: { ne: $slug } }) {
+      html
+      id
+      timeToRead
+      frontmatter {
+        title
+        date
+        tags
+        description
       }
       fields {
         slug

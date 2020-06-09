@@ -6,7 +6,7 @@ import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 
 import PostCard from '~/components/PostCard';
 import Search from '~/components/Search';
-// import PoweredByAlgolia from '~/components/PoweredByAlgolia';
+import PoweredByAlgolia from '~/components/PoweredByAlgolia';
 
 import * as S from './styles';
 
@@ -70,9 +70,9 @@ const BlogList = ({ data, location, pageContext }) => {
         )}
       </S.Pagination>
 
-      {/* <footer>
+      <footer>
         <PoweredByAlgolia />
-      </footer> */}
+      </footer>
     </S.Container>
   );
 };
