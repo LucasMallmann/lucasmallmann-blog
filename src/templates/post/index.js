@@ -9,14 +9,14 @@ import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 
 import * as S from './styles';
 import Description from '~/components/Description';
+import PostCard from '~/components/PostCard';
 
 const BlogTemplate = ({ data }) => {
-  const { post } = data;
+  const { post, relatedPosts } = data;
+
   const { frontmatter, html, timeToRead, id } = post;
   const { image, title, date, description, tags } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
-
-  // Query for last post
 
   const navigate = useNavigate();
 
@@ -67,6 +67,24 @@ const BlogTemplate = ({ data }) => {
 
       <Description />
 
+      <S.RelatedPosts>
+        <h2>Posts que podem ser do seu interesse 😁</h2>
+        {relatedPosts.nodes.map((nextToRead) => (
+          <PostCard
+            key={nextToRead.id}
+            title={nextToRead.frontmatter.title}
+            excerpt={nextToRead.excerpt}
+            tags={nextToRead.frontmatter.tags}
+            date={nextToRead.frontmatter.date}
+            slug={nextToRead.fields.slug}
+            featuredImgFluid={
+              nextToRead.frontmatter.image.childImageSharp.fluid
+            }
+            timeToRead={nextToRead.timeToRead}
+          />
+        ))}
+      </S.RelatedPosts>
+
       <S.Comments>
         <CommentCount config={disqusConfig} placeholder="..." />
         <Disqus config={disqusConfig} />
@@ -75,19 +93,41 @@ const BlogTemplate = ({ data }) => {
   );
 };
 
+const postShape = PropTypes.shape({
+  id: PropTypes.string,
+  html: PropTypes.string,
+  timeToRead: PropTypes.number,
+  frontmatter: PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.string,
+    image: PropTypes.object,
+    description: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+  }),
+});
+
+const relatedPostsShape = PropTypes.shape({
+  id: PropTypes.string,
+  html: PropTypes.string,
+  timeToRead: PropTypes.number,
+  excerpt: PropTypes.string,
+  fields: PropTypes.shape({
+    slug: PropTypes.string,
+  }),
+  frontmatter: PropTypes.shape({
+    title: PropTypes.string,
+    date: PropTypes.string,
+    image: PropTypes.object,
+    description: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+  }),
+});
+
 BlogTemplate.propTypes = {
   data: PropTypes.shape({
-    post: PropTypes.shape({
-      id: PropTypes.string,
-      html: PropTypes.string,
-      timeToRead: PropTypes.number,
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string,
-        date: PropTypes.string,
-        image: PropTypes.object,
-        description: PropTypes.string,
-        tags: PropTypes.arrayOf(PropTypes.string),
-      }),
+    post: postShape,
+    relatedPosts: PropTypes.shape({
+      nodes: PropTypes.arrayOf(relatedPostsShape),
     }),
   }).isRequired,
 };
@@ -116,18 +156,31 @@ export const pageQuery = graphql`
       }
     }
 
-    nextToRead: markdownRemark(fields: { slug: { ne: $slug } }) {
-      html
-      id
-      timeToRead
-      frontmatter {
-        title
-        date
-        tags
-        description
-      }
-      fields {
-        slug
+    relatedPosts: allMarkdownRemark(
+      filter: { fields: { slug: { ne: $slug } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 2
+    ) {
+      nodes {
+        id
+        timeToRead
+        excerpt(pruneLength: 200)
+        frontmatter {
+          title
+          date
+          tags
+          description
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+        fields {
+          slug
+        }
       }
     }
   }

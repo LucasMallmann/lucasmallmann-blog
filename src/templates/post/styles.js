@@ -235,3 +235,13 @@ export const Comments = styled.div`
     padding: 0 16px;
   `}
 `;
+
+export const RelatedPosts = styled.div`
+  margin-top: 24px;
+
+  > h2 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+  }
+`;
