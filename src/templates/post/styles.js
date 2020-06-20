@@ -96,6 +96,10 @@ export const Container = styled.div`
     margin: 0.5em 0;
     padding: 1em;
     overflow: auto;
+
+    code {
+      font-size: 14px;
+    }
   }
 
   .gatsby-highlight-code-line {
