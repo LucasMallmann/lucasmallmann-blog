@@ -21,9 +21,8 @@ const Header = () => {
         </S.Avatar>
 
         <nav>
-          <Link to="/about">sobre</Link>
           <Link to="/blog">blog</Link>
-          <Link to="/about">projects</Link>
+          <Link to="/projects">projects</Link>
         </nav>
       </S.Inner>
     </S.Container>
