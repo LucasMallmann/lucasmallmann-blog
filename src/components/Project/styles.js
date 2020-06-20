@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.3s box-shadow;
+
+  &:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
+  }
 
   h3 {
     margin-top: 18px;

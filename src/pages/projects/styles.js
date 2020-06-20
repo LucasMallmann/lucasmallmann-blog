@@ -14,7 +14,7 @@ export const ProjectsGrid = styled.div`
   margin-top: 36px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 16px 12px;
 
   ${media.lessThan('small')`
     grid-template-columns: 1fr;
