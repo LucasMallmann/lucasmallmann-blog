@@ -18,6 +18,5 @@ export const ProjectsGrid = styled.div`
 
   ${media.lessThan('small')`
     grid-template-columns: 1fr;
-
   `}
 `;

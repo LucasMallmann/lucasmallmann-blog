@@ -22,11 +22,19 @@ module.exports = {
   ],
   projects: [
     {
+      name: 'Personal Blog',
+      description:
+        'Blog para conversarmos sobre tecnologia, carreira e outras coisas que me vierem na mente.',
+      techs: ['Gatsby', 'AlgoliaSearch', 'Styled-Components', 'React'],
+      thumbnail: 'blog.jpg',
+      github: 'https://github.com/LucasMallmann/lucasmallmann',
+    },
+    {
       name: 'Medium Clone',
       description:
         'Um pequeno clone do Medium realizado para um processo seletivo. Você pode realizar novas postagens, ler o blog das pessoas, e adicionar sua reação com o famoso "clap"!',
       techs: ['NodeJS', 'ReactJS', 'MongoDB', 'Express', 'Styled Components'],
-      thumbnail: ['medium.png'],
+      thumbnail: 'medium.jpg',
       github: 'https://github.com/LucasMallmann/medium-front',
     },
     {
@@ -35,13 +43,20 @@ module.exports = {
         'Aplicação para agendamento de cortes de cabelo. Essa aplicação foi resultado dos estudos do Bootcamp GoStack da Rocketseat.',
       techs: [
         'ReactNative',
-        'ContextAPI',
+        'Typescript',
         'Android',
         'iOS',
         'Styled Components',
       ],
-      thumbnail: ['medium.png'],
+      thumbnail: 'gobarber.jpg',
       github: 'https://github.com/LucasMallmann/gobarber-native',
+    },
+    {
+      name: 'GoBarber Api',
+      description: 'API Rest para o app GoBarber',
+      techs: ['NodeJS', 'Typescript', 'Design Pattern', 'Postgres'],
+      thumbnail: 'api.jpg',
+      github: 'https://github.com/LucasMallmann/gobarber-typescript-backend',
     },
   ],
 };

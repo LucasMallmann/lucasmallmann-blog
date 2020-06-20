@@ -12,13 +12,17 @@ const Projects = () => {
         siteMetadata {
           projects {
             name
+            description
+            techs
+            thumbnail
+            github
           }
         }
       }
     }
   `);
 
-  console.log(data);
+  const { projects } = data.site.siteMetadata;
 
   return (
     <S.Container>
@@ -28,10 +32,9 @@ const Projects = () => {
       </p>
 
       <S.ProjectsGrid>
-        <Project />
-        <Project />
-        <Project />
-        <Project />
+        {projects.map((project) => (
+          <Project key={project.name} project={project} />
+        ))}
       </S.ProjectsGrid>
     </S.Container>
   );

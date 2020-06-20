@@ -1,36 +1,45 @@
-import React from 'react';
+/* eslint-disable import/no-dynamic-require */
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
-const Project = () => {
+const Project = ({ project }) => {
+  const techs = useMemo(() => project.techs.join(', '), [project.techs]);
+
   return (
     <S.Container>
       <section>
         <S.Thumbnail>
           <img
-            src="https://www.aboutmonica.com/static/instant-reservations-e5570514b233b109222a5dadb0baf432.png"
+            src={require(`../../assets/${project.thumbnail}`)}
             alt="Project"
           />
         </S.Thumbnail>
-        <h3>Gobarber App</h3>
-        <p>
-          Um pequeno clone do Medium realizado para um processo seletivo. Você
-          pode realizar novas postagens, ler o blog das pessoas, e adicionar sua
-          reação com o famoso clap!
-        </p>
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
       </section>
 
       <S.Footer>
         <div>
           <strong>Techs: </strong>
-          React, CSS, Redux, NodeJS, AWS Lambdas and other Serverless
-          technologies.
+          {techs}
         </div>
 
-        <a href="http://github.com">Github</a>
+        <a href={project.github}>Github</a>
       </S.Footer>
     </S.Container>
   );
+};
+
+Project.propTypes = {
+  project: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    techs: PropTypes.arrayOf(PropTypes.string),
+    thumbnail: PropTypes.string,
+    github: PropTypes.string,
+  }).isRequired,
 };
 
 export default Project;
