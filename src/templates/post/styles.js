@@ -60,8 +60,28 @@ export const Container = styled.div`
   }
 
   .gatsby-code-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f8f8f8;
+    transition: 0.2s opacity;
+
+    &[data-tooltip]:hover:after {
+      visibility: hidden;
+    }
+
+    &::after {
+      display: none;
+    }
+
     svg {
-      fill: ${lighten(0.12, '#272822')};
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
 
     &-container {

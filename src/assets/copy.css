@@ -1,0 +1,20 @@
+.toaster {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.toaster-text {
+  background-color: #3a3b32;
+  position: absolute;
+  right: 0;
+  bottom: 8%;
+  font-family: inherit;
+  width: 300px;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  color: #f8f8f8;
+  letter-spacing: 1.2px;
+}
