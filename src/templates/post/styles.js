@@ -263,6 +263,10 @@ export const Comments = styled.div`
 export const RelatedPosts = styled.div`
   margin-top: 24px;
 
+  ${media.lessThan('small')`
+    padding: 0 16px;
+  `}
+
   > h2 {
     color: #333;
     font-size: 28px;
