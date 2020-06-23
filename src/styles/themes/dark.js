@@ -40,7 +40,7 @@ module.exports = {
     input: {
       placeholder: '#bbb',
       color: '#D0D0D1',
-      border: 'trasnparent',
+      border: 'transparent',
       background: '#3B3B40',
       svg: '#bbb',
     },
