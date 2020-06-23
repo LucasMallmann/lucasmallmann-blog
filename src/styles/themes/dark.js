@@ -21,6 +21,11 @@ module.exports = {
       },
     },
 
+    project: {
+      background: '#272A2B',
+      link: '#D0D0D1',
+    },
+
     postCard: {
       border: 'transparent',
       background: '#272A2B',
@@ -33,10 +38,11 @@ module.exports = {
     },
 
     input: {
-      placeholder: '#424242',
-      color: '#333',
-      border: '#ddd',
-      background: '#f8f8f8',
+      placeholder: '#bbb',
+      color: '#D0D0D1',
+      border: 'trasnparent',
+      background: '#3B3B40',
+      svg: '#bbb',
     },
   },
 };

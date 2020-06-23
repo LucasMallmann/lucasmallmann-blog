@@ -23,6 +23,11 @@ module.exports = {
       },
     },
 
+    project: {
+      background: '#f8f8f8',
+      link: '#333',
+    },
+
     postCard: {
       border: '#ddd',
       background: '#fafafa',
@@ -39,6 +44,7 @@ module.exports = {
       color: '#333',
       border: '#ddd',
       background: '#f8f8f8',
+      svg: '#424242',
     },
   },
 };

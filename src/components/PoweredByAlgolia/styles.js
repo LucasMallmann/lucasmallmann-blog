@@ -7,6 +7,8 @@ export const Container = styled.a`
   text-align: end;
   padding: 0;
 
+  color: ${(props) => props.theme.colors.primary};
+
   svg {
     margin-left: 4px;
   }

@@ -4,7 +4,7 @@ import media from 'styled-media-query';
 
 export const Container = styled.form`
   background: ${(props) => darken(0.03, props.theme.colors.input.background)};
-  color: #333;
+  color: ${(props) => props.theme.colors.input.color};
   border-radius: 6px;
 
   border: 1.3px solid
@@ -23,7 +23,9 @@ export const Container = styled.form`
 
   svg {
     color: ${(props) =>
-      props.focused ? props.theme.colors.primary : '#424242'};
+      props.focused
+        ? props.theme.colors.primary
+        : props.theme.colors.input.svg};
   }
 
   input {

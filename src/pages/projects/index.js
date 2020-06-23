@@ -49,7 +49,7 @@ const Projects = () => {
     });
 
     return newProjects;
-  }, []);
+  }, [images.nodes, projects]);
 
   return (
     <S.Container>

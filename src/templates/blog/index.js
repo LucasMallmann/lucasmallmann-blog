@@ -29,7 +29,7 @@ const BlogList = ({ data, location, pageContext }) => {
   const nextPage = useMemo(() => `/blog/${currentPage + 1}`, [currentPage]);
 
   const parsedSearch = useMemo(() => qs.parse(location?.search?.slice(1)), [
-    location.search,
+    location?.search?.slice,
   ]);
 
   return (
