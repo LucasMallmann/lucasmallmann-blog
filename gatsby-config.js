@@ -1,3 +1,4 @@
+/* eslint-disable import/no-dynamic-require */
 const path = require('path');
 require('dotenv').config();
 
