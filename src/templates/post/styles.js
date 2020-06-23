@@ -235,19 +235,19 @@ export const Tags = styled.ul`
 
   li {
     padding: 4px 10px;
-    background-color: #eee;
+    background-color: ${(props) => props.theme.colors.post.tags.background};
     border-radius: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 300;
     font-size: 14px;
-    color: #333;
-    transition: 0.5s background;
+    color: ${(props) => props.theme.colors.post.tags.color};
+    transition: 0.5s opacity;
     margin-right: 8px;
 
     &:hover {
-      background-color: ${darken(0.05, '#eee')};
+      opacity: 0.7;
     }
   }
 `;

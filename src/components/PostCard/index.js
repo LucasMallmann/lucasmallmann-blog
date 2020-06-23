@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FaTag } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { isMobile, BrowserView } from 'react-device-detect';
 
+import { ThemeContext } from 'styled-components';
 import * as S from './styles';
 
 const PostCard = ({
@@ -16,6 +17,8 @@ const PostCard = ({
   timeToRead,
   slug,
 }) => {
+  const theme = useContext(ThemeContext);
+
   const formattedDate = useMemo(() => {
     return format(parseISO(date), "dd 'de' MMMM 'de' yyyy", { locale: pt });
   }, [date]);
@@ -30,7 +33,7 @@ const PostCard = ({
     }
 
     return excerpt;
-  }, [excerpt, isMobile]);
+  }, [excerpt]);
 
   return (
     <S.Container to={`/blog${slug}`}>
@@ -39,7 +42,7 @@ const PostCard = ({
         <p>{parsedDescription}</p>
 
         <div>
-          <FaTag color="#424242" size={14} />
+          <FaTag color={theme.colors.postCard.tags.tag} size={14} />
           <S.Tags>
             {tags.map((tag) => (
               <li key={tag}>

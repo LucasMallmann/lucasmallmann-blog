@@ -1,5 +1,3 @@
-const { darken } = require('polished');
-
 module.exports = {
   title: 'dark',
 
@@ -12,8 +10,26 @@ module.exports = {
     postDescription: '#727273',
 
     footer: {
-      background: darken(0.03, '#1D1D1D'),
+      background: '#262626',
       text: '#ddd',
+    },
+
+    post: {
+      tags: {
+        background: '#404040',
+        color: '#d0d0d1',
+      },
+    },
+
+    postCard: {
+      border: 'transparent',
+      background: '#272A2B',
+      tags: {
+        small: '#D0D0D1',
+        tag: '#8C8C8C',
+        background: '#404040',
+        color: '#f5f5f5',
+      },
     },
 
     input: {

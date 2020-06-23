@@ -5,6 +5,7 @@ import media from 'styled-media-query';
 
 export const Container = styled(Link)`
   position: relative;
+
   &:before,
   &:after {
     content: '';
@@ -14,11 +15,13 @@ export const Container = styled(Link)`
 
   color: inherit;
   padding: 16px;
-  border: 1px solid #ddd;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${(props) => props.theme.colors.postCard.border};
+  ${(props) =>
+    props.theme.title === 'light' &&
+    'box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)'};
   border-radius: 4px;
   margin: 12px auto;
-  background-color: #fafafa;
+  background-color: ${(props) => props.theme.colors.postCard.background};
   display: flex;
 
   &:hover {
@@ -100,7 +103,7 @@ export const Content = styled.div`
     font-size: 12px;
     font-weight: 300;
     line-height: 16px;
-    color: #333;
+    color: ${(props) => props.theme.colors.postCard.tags.small};
     margin-top: 4px;
   }
 `;
@@ -130,7 +133,7 @@ export const Tags = styled.ul`
 
   li {
     padding: 2px 5px;
-    background-color: #eee;
+    background-color: ${(props) => props.theme.colors.postCard.tags.background};
     border-radius: 2px;
 
     display: flex;
@@ -140,6 +143,7 @@ export const Tags = styled.ul`
     margin-left: 6px;
 
     span {
+      color: ${(props) => props.theme.colors.postCard.tags.color};
       font-weight: 300;
       font-size: 12px;
     }

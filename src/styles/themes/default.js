@@ -16,6 +16,24 @@ module.exports = {
       text: '#000',
     },
 
+    post: {
+      tags: {
+        background: '#eee',
+        color: '#333',
+      },
+    },
+
+    postCard: {
+      border: '#ddd',
+      background: '#fafafa',
+      tags: {
+        small: '#333',
+        tag: '#424242',
+        background: '#eeeeee',
+        color: '#000',
+      },
+    },
+
     input: {
       placeholder: '#424242',
       color: '#333',
