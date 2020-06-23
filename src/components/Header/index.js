@@ -9,7 +9,7 @@ import avatarPic from '~/assets/me.jpeg';
 import * as S from './styles';
 
 const Header = ({ toggleTheme }) => {
-  const value = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
 
   return (
     <S.Container>
@@ -28,11 +28,12 @@ const Header = ({ toggleTheme }) => {
           <Link to="/blog">blog</Link>
           <Link to="/projects">projects</Link>
           <S.ToggleThemeButton
+            theme={theme.title}
             onClick={toggleTheme}
             aria-label="Ativate light mode"
             title="Activate light mode"
           >
-            <div className="first" />
+            <div className="inner-circle" />
             <div className="moon" />
           </S.ToggleThemeButton>
         </nav>

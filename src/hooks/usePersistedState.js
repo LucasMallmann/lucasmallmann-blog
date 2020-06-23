@@ -4,7 +4,7 @@ function usePersistedState({ key, initialState }) {
   const [state, setState] = useState(() => {
     const localStorageValue = localStorage.getItem(key);
 
-    if (localStorage) {
+    if (localStorageValue) {
       return JSON.parse(localStorageValue);
     }
 

@@ -6,23 +6,23 @@ export const Container = styled.div`
   bottom: 0;
   left: 0;
   width: 100vw;
-  border-top: 1px solid #ddd;
+  ${(props) => props.theme.title === 'light' && `border-top: 1px solid #ddd;`}
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 50;
 
-  background-color: ${lighten(0.02, '#eee')};
+  background-color: ${(props) => props.theme.colors.footer.background};
 
   a {
-    color: #333;
+    color: ${(props) => props.theme.colors.footer.text};
     margin: 0 8px;
     display: flex;
-    transition: color 0.3s;
+    transition: all 0.3s;
 
     &:hover {
-      color: ${lighten(0.2, '#333')};
+      opacity: 0.8;
     }
   }
 `;

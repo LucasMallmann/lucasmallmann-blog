@@ -7,13 +7,17 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }
+
   body {
-    background: #f8f8f8 ;
-    -webkit-font-smoothing: antialiased
+    background: ${(props) => props.theme.colors.background};
+    -webkit-font-smoothing: antialiased;
   }
+
   body, input, button {
     font: 16px "Open Sans", sans-serif;
+    color: ${(props) => props.theme.colors.text}
   }
+
   button {
     cursor: pointer;
   }
