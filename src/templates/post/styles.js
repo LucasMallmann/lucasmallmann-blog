@@ -268,7 +268,6 @@ export const RelatedPosts = styled.div`
   `}
 
   > h2 {
-    color: #333;
     font-size: 28px;
     font-weight: 600;
   }
