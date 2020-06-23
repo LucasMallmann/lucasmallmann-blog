@@ -7,9 +7,6 @@ const queries = require('./src/utils/algolia');
 module.exports = {
   siteMetadata,
   plugins: [
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    'gatsby-image',
     'gatsby-plugin-use-query-params',
     {
       resolve: 'gatsby-source-filesystem',
@@ -26,6 +23,15 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'thumbnails',
+        path: path.join(__dirname, 'src', 'assets', 'thumbnails'),
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
@@ -35,6 +41,7 @@ module.exports = {
         pageTransitionDelay: 0,
       },
     },
+    'gatsby-image',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

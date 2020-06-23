@@ -1,6 +1,7 @@
 /* eslint-disable import/no-dynamic-require */
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 
 import * as S from './styles';
 
@@ -11,10 +12,7 @@ const Project = ({ project }) => {
     <S.Container>
       <section>
         <S.Thumbnail>
-          <img
-            src={require(`../../assets/${project.thumbnail}`)}
-            alt="Project"
-          />
+          <Img fluid={project.fluid} alt="Project" />
         </S.Thumbnail>
         <h3>{project.name}</h3>
         <p>{project.description}</p>
@@ -39,6 +37,7 @@ Project.propTypes = {
     techs: PropTypes.arrayOf(PropTypes.string),
     thumbnail: PropTypes.string,
     github: PropTypes.string,
+    fluid: PropTypes.object,
   }).isRequired,
 };
 

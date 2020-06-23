@@ -18,6 +18,8 @@ const BlogTemplate = ({ data }) => {
   const { image, title, date, description, tags } = frontmatter;
   const featuredImgFluid = image.childImageSharp.fluid;
 
+  console.log(featuredImgFluid);
+
   const navigate = useNavigate();
 
   const formattedDate = useMemo(() => {

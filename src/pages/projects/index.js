@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Project from '~/components/Project';
@@ -7,8 +7,8 @@ import * as S from './styles';
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
-    query ProjectsQuery {
-      site {
+    query {
+      site: site {
         siteMetadata {
           projects {
             name
@@ -19,10 +19,37 @@ const Projects = () => {
           }
         }
       }
+
+      images: allImageSharp(
+        filter: { fluid: { src: { regex: "/(medium|api|gobarber|blog)/" } } }
+      ) {
+        nodes {
+          fluid(maxWidth: 360, maxHeight: 240) {
+            src
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
     }
   `);
 
   const { projects } = data.site.siteMetadata;
+  const { images } = data;
+
+  const transformedProjects = useMemo(() => {
+    const newProjects = images.nodes.map(({ fluid }) => {
+      const splitArray = fluid.src.split('/');
+      const key = splitArray[splitArray.length - 1];
+
+      const projectWithKey = projects.find(
+        (project) => project.thumbnail === key,
+      );
+
+      return { ...projectWithKey, fluid };
+    });
+
+    return newProjects;
+  }, []);
 
   return (
     <S.Container>
@@ -32,7 +59,7 @@ const Projects = () => {
       </p>
 
       <S.ProjectsGrid>
-        {projects.map((project) => (
+        {transformedProjects.map((project) => (
           <Project key={project.name} project={project} />
         ))}
       </S.ProjectsGrid>
