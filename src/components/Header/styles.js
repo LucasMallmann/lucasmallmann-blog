@@ -120,6 +120,9 @@ export const Inner = styled.div`
   margin: 0 auto;
 
   nav {
+    display: flex;
+    align-items: center;
+
     a {
       color: #f8f8f8;
       font-size: 16px;
@@ -130,9 +133,7 @@ export const Inner = styled.div`
         font-size: 14px;
       `}
 
-      &:not(:last-child) {
-        margin-right: 12px;
-      }
+      margin-right: 12px;
 
       &::before {
         content: '';
