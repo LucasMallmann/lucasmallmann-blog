@@ -2,6 +2,7 @@ module.exports = {
   title: 'Lucas Mallmann',
   siteUrl: 'https://lucasmallmann.cc',
   description: 'Ajudando pessoas a se apaixonarem por códigos 🚀',
+  titleTemplate: '%s | Lucas Mallmann | Software Engineer',
   social: [
     {
       name: 'Github',
