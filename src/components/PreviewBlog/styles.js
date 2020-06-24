@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   > h1 {
     font-weight: 500;
-    font-size: 32px;
+    font-size: 28px;
 
     ${media.lessThan('small')`
       font-size: 26px;
