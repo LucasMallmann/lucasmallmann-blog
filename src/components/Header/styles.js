@@ -105,7 +105,7 @@ export const Container = styled.header`
   z-index: 50;
   background-color: ${(props) => props.theme.colors.secondary};
 
-  ${media.lessThan('small')`
+  ${media.lessThan('512px')`
     padding: 0 16px;
   `}
 `;

@@ -3,9 +3,7 @@ import media from 'styled-media-query';
 
 export const Container = styled.div`
   padding-top: 24px;
-
   ${media.lessThan('small')`
-    grid-template-columns: 1fr;
     padding: 16px;
   `}
 `;
@@ -16,7 +14,7 @@ export const ProjectsGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px 12px;
 
-  ${media.lessThan('small')`
+  ${media.lessThan('medium')`
     grid-template-columns: 1fr;
   `}
 `;
