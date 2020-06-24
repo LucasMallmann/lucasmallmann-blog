@@ -9,6 +9,7 @@ import media from 'styled-media-query';
 import Author from '~/components/Author';
 import Introduction from '~/components/Introduction';
 import PreviewBlog from '~/components/PreviewBlog';
+import SEO from '~/components/SEO';
 
 const Container = styled.div`
   padding-top: 24px;
@@ -51,15 +52,18 @@ const Home = ({ data }) => {
   const posts = allMarkdownRemark.edges;
 
   return (
-    <Container>
-      <Author />
+    <>
+      <SEO title="Home" />
+      <Container>
+        <Author />
 
-      <Introduction />
+        <Introduction />
 
-      <PreviewBlog posts={posts} />
+        <PreviewBlog posts={posts} />
 
-      <AnimatedLink to="/blog">Ver todos os posts</AnimatedLink>
-    </Container>
+        <AnimatedLink to="/blog">Ver todos os posts</AnimatedLink>
+      </Container>
+    </>
   );
 };
 

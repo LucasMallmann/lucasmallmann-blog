@@ -3,6 +3,7 @@ module.exports = {
   siteUrl: 'https://lucasmallmann.cc',
   description: 'Ajudando pessoas a se apaixonarem por códigos 🚀',
   titleTemplate: '%s | Lucas Mallmann | Software Engineer',
+  defaultImage: '/icon.png',
   social: [
     {
       name: 'Github',

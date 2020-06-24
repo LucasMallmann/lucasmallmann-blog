@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import qs from 'qs';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 
+import SEO from '~/components/SEO';
 import PostCard from '~/components/PostCard';
 import Search from '~/components/Search';
 import PoweredByAlgolia from '~/components/PoweredByAlgolia';
@@ -33,47 +34,50 @@ const BlogList = ({ data, location, pageContext }) => {
   ]);
 
   return (
-    <S.Container>
-      <Search search={parsedSearch}>
-        {posts.map(({ node }) => {
-          const { title, tags, image, date } = node.frontmatter;
-          const featuredImgFluid = image.childImageSharp.fluid;
+    <>
+      <SEO title="Blog" />
+      <S.Container>
+        <Search search={parsedSearch}>
+          {posts.map(({ node }) => {
+            const { title, tags, image, date } = node.frontmatter;
+            const featuredImgFluid = image.childImageSharp.fluid;
 
-          return (
-            <PostCard
-              date={date}
-              timeToRead={node.timeToRead}
-              key={node.id}
-              slug={node.fields.slug}
-              title={title}
-              tags={tags}
-              excerpt={node.excerpt}
-              featuredImgFluid={featuredImgFluid}
-            />
-          );
-        })}
-      </Search>
+            return (
+              <PostCard
+                date={date}
+                timeToRead={node.timeToRead}
+                key={node.id}
+                slug={node.fields.slug}
+                title={title}
+                tags={tags}
+                excerpt={node.excerpt}
+                featuredImgFluid={featuredImgFluid}
+              />
+            );
+          })}
+        </Search>
 
-      <S.Pagination>
-        {!isFirst && (
-          <Link to={prevPage} rel="prev" className="left">
-            <MdArrowBack /> Página Anterior
-          </Link>
-        )}
-        <span>
-          {currentPage} de {numberOfPages}
-        </span>
-        {!isLast && (
-          <Link to={nextPage} rel="next" className="right">
-            Próxima Página <MdArrowForward />
-          </Link>
-        )}
-      </S.Pagination>
+        <S.Pagination>
+          {!isFirst && (
+            <Link to={prevPage} rel="prev" className="left">
+              <MdArrowBack /> Página Anterior
+            </Link>
+          )}
+          <span>
+            {currentPage} de {numberOfPages}
+          </span>
+          {!isLast && (
+            <Link to={nextPage} rel="next" className="right">
+              Próxima Página <MdArrowForward />
+            </Link>
+          )}
+        </S.Pagination>
 
-      <footer>
-        <PoweredByAlgolia />
-      </footer>
-    </S.Container>
+        <footer>
+          <PoweredByAlgolia />
+        </footer>
+      </S.Container>
+    </>
   );
 };
 
@@ -141,6 +145,7 @@ export const blogListQuery = graphql`
             date
             description
             image {
+              publicURL
               childImageSharp {
                 fluid {
                   src

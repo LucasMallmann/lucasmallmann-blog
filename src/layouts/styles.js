@@ -12,6 +12,7 @@ const rotate = keyframes`
 `;
 
 export const Content = styled.div`
+  background-color: ${(props) => props.theme.colors.background} !important;
   max-width: 700px;
   margin: 48px auto 100px;
 `;

@@ -7,9 +7,11 @@ import pt from 'date-fns/locale/pt';
 import { useNavigate } from '@reach/router';
 import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 
-import * as S from './styles';
 import Description from '~/components/Description';
 import PostCard from '~/components/PostCard';
+import SEO from '~/components/SEO';
+
+import * as S from './styles';
 
 const BlogTemplate = ({ data }) => {
   const { post, relatedPosts } = data;
@@ -35,6 +37,7 @@ const BlogTemplate = ({ data }) => {
 
   return (
     <>
+      <SEO title={title} description={description} image={image.publicURL} />
       <S.CoverImage fluid={featuredImgFluid} />
       <S.Container>
         <S.GoBackLink onClick={() => navigate(-1)}>
