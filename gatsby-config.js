@@ -155,7 +155,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://www.example.com',
+        siteUrl: 'https://lucasmallmann.netlify.app',
       },
     },
     {
