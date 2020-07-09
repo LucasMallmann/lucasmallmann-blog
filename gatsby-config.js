@@ -124,11 +124,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Lucas Mallmann',
-        short_name: 'lucas_mallmann',
+        name: 'Lucas Mallmann Blog',
+        short_name: 'Lucas Mallmann Blog',
         start_url: '/',
         background_color: '#f7f0eb',
-        theme_color: '#EF476F',
+        theme_color: '#414361',
         display: 'standalone',
         icon: path.resolve('src', 'assets', 'icon.png'),
       },
@@ -174,10 +174,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
+    `gatsby-plugin-sitemap`,
     'gatsby-plugin-layout',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-offline',
   ],
 };

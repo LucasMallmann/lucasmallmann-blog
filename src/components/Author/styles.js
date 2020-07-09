@@ -13,6 +13,7 @@ export const Container = styled.div`
   }
 
   > p {
+    margin-top: 16px;
     font-size: 20px;
     font-weight: 600;
     font-style: italic;

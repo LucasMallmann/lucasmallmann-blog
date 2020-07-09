@@ -39,8 +39,11 @@ const SEO = ({ title, description, image, article }) => {
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <meta httpEquiv="Content-Language" content="pt-br" />
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+
+      <meta property="og:locale" content="pt_BR" />
 
       {seo.url && <meta property="og:url" content={seo.url} />}
 
@@ -62,6 +65,8 @@ const SEO = ({ title, description, image, article }) => {
       )}
 
       {seo.image && <meta name="twitter:image" content={seo.image} />}
+
+      <meta property="og:site_name" content="Receita de Vovó" />
     </Helmet>
   );
 };
@@ -72,6 +77,7 @@ SEO.propTypes = {
   image: PropTypes.string,
   article: PropTypes.bool,
 };
+
 SEO.defaultProps = {
   title: null,
   description: null,

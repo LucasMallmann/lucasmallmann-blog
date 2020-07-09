@@ -1,7 +1,8 @@
 module.exports = {
   title: 'Lucas Mallmann',
-  siteUrl: 'https://lucasmallmann.cc',
-  description: 'Ajudando pessoas a se apaixonarem por códigos 🚀',
+  siteUrl: 'https://lucasmallmann.netlify.app/',
+  description:
+    'Ensinando as pessoas a se apaixonarem cada vez mais por tecnologia!',
   titleTemplate: '%s | Lucas Mallmann | Software Engineer',
   defaultImage: '/icon.png',
   social: [
