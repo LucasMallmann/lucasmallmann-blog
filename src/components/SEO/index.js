@@ -66,7 +66,25 @@ const SEO = ({ title, description, image, article }) => {
 
       {seo.image && <meta name="twitter:image" content={seo.image} />}
 
-      <meta property="og:site_name" content="Receita de Vovó" />
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "url": "${seo.url}",
+          "name": "Lucas Mallmann",
+          "jobTitle": "Desenvolvedor de Software",
+          "affiliation": {
+            "@type": "Organization",
+            "telephone": "0800 887 1680",
+            "contactType": "Customer Support",
+            "name": "Pling"
+          }
+        }
+      `}
+      </script>
+
+      <meta property="og:site_name" content="Lucas Mallmann Blog" />
     </Helmet>
   );
 };
