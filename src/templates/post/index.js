@@ -147,6 +147,7 @@ export const pageQuery = graphql`
         tags
         description
         image {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1280, quality: 60) {
               ...GatsbyImageSharpFluid

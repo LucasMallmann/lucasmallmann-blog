@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ThemeProvider, keyframes } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Header from '~/components/Header';

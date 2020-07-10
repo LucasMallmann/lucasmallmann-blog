@@ -111,6 +111,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        light: require(`${__dirname}/src/styles/themes/default.js`),
+        dark: require(`${__dirname}/src/styles/themes/dark.js`),
+      },
+    },
+    {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
         fonts: [

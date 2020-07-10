@@ -4,6 +4,17 @@ module.exports = {
   description:
     'Ensinando as pessoas a se apaixonarem cada vez mais por tecnologia!',
   titleTemplate: '%s | Lucas Mallmann | Software Engineer',
+  keywords: [
+    'blog',
+    'tech',
+    'dev',
+    'javascript',
+    'react',
+    'nodejs',
+    'typescript',
+    'nextjs',
+    'pwa',
+  ],
   defaultImage: '/icon.png',
   social: [
     {
