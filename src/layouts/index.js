@@ -13,18 +13,15 @@ import * as S from './styles';
 
 const Layout = ({ children }) => {
   const [theme, setTheme] = useState(light);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const storageValue = localStorage.getItem('theme');
 
     if (storageValue) {
       setTheme(JSON.parse(storageValue));
-      setMounted(true);
       return;
     }
 
-    setMounted(true);
     setTheme(light);
   }, []);
 
@@ -36,17 +33,13 @@ const Layout = ({ children }) => {
     setTheme(theme.title === 'light' ? dark : light);
   }, [setTheme, theme]);
 
-  return mounted ? (
+  return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <S.Content>{children}</S.Content>
       <Header toggleTheme={handleToggleTheme} />
       <Footer />
     </ThemeProvider>
-  ) : (
-    <S.LoadingContainer>
-      <S.Spinner />
-    </S.LoadingContainer>
   );
 };
 
